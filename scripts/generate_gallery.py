@@ -21,12 +21,15 @@ for category_dir in sorted(IMAGES_DIR.iterdir()):
     if not category_dir.is_dir():
         continue
 
-    images = []
-    for file in sorted(category_dir.iterdir()):
-        if file.name.startswith("."):
-            continue
+    # Sort images by creation time descending (newest first)
+    images_files = [
+        f for f in category_dir.iterdir() if f.is_file() and not f.name.startswith(".")
+    ]
+    images_files.sort(key=lambda f: f.stat().st_ctime, reverse=True)
 
-        images.append({"file": file.name, "title": title_from_filename(file.name)})
+    images = [
+        {"file": f.name, "title": title_from_filename(f.name)} for f in images_files
+    ]
 
     if not images:
         continue

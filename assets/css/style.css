@@ -272,3 +272,8 @@ details[open] summary {
 }
 
 
+main.container {
+  padding-top: 2rem;     /* existing top padding */
+  padding-bottom: 6rem;  /* extra space for floating nav */
+}
+
