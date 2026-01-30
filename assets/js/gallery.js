@@ -67,14 +67,13 @@ function render(data) {
 }
 
 // Filter function
-function filter(id) {
-  document.querySelectorAll(".category").forEach(section => {
-    section.style.display = (id === "all" || section.id === id) ? "" : "none";
-  });
-
-  document.querySelectorAll("#filter-nav button").forEach(btn => {
-    btn.classList.toggle("active", btn.textContent.toLowerCase() === id);
-  });
+ function filter(id) {
+  if(id === "all") {
+    document.querySelectorAll(".category").forEach(s => s.style.display = "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 // Lightbox + arrows + disable right click
@@ -130,4 +129,13 @@ document.addEventListener("keydown", (e) => {
       break;
   }
 });
+
+const mobileToggle = document.createElement("button");
+mobileToggle.className = "mobile-filter-toggle";
+mobileToggle.textContent = "Filter Categories ▼";
+mobileToggle.onclick = () => {
+  const nav = document.querySelector(".category-nav");
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+};
+filterNav.parentElement.insertBefore(mobileToggle, filterNav);
 
