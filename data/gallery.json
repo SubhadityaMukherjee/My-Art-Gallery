@@ -181,6 +181,10 @@
       "title": "Food",
       "images": [
         {
+          "file": "Dim sum.jpeg",
+          "title": "Dim Sum"
+        },
+        {
           "file": "Shrimp ramen.webp",
           "title": "Shrimp Ramen"
         },
