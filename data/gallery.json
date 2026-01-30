@@ -1,0 +1,208 @@
+{
+  "categories": [
+    {
+      "id": "animals",
+      "title": "Animals",
+      "images": [
+        {
+          "file": "Cat and dog.webp",
+          "title": "Cat And Dog"
+        },
+        {
+          "file": "Christmas_Card_25.webp",
+          "title": "Christmas Card 25"
+        },
+        {
+          "file": "Detective Feather.webp",
+          "title": "Detective Feather"
+        },
+        {
+          "file": "Ducky with a flower on her head.webp",
+          "title": "Ducky With A Flower On Her Head"
+        },
+        {
+          "file": "Golden retriever puppy with our peace lily.webp",
+          "title": "Golden Retriever Puppy With Our Peace Lily"
+        },
+        {
+          "file": "Magic kitty.webp",
+          "title": "Magic Kitty"
+        },
+        {
+          "file": "Valentines day mice.webp",
+          "title": "Valentines Day Mice"
+        },
+        {
+          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
+          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
+        },
+        {
+          "file": "owl.webp",
+          "title": "Owl"
+        },
+        {
+          "file": "penguin.webp",
+          "title": "Penguin"
+        }
+      ]
+    },
+    {
+      "id": "character_design",
+      "title": "Character Design",
+      "images": [
+        {
+          "file": "Character_Practice.webp",
+          "title": "Character Practice"
+        },
+        {
+          "file": "Floaty cathedral lady.webp",
+          "title": "Floaty Cathedral Lady"
+        },
+        {
+          "file": "Girl with her tiny animal friends.webp",
+          "title": "Girl With Her Tiny Animal Friends"
+        },
+        {
+          "file": "Muscle man.webp",
+          "title": "Muscle Man"
+        },
+        {
+          "file": "My grandmother.webp",
+          "title": "My Grandmother"
+        },
+        {
+          "file": "treegrandpa.webp",
+          "title": "Treegrandpa"
+        },
+        {
+          "file": "valentines Day flowers.webp",
+          "title": "Valentines Day Flowers"
+        }
+      ]
+    },
+    {
+      "id": "concept_art",
+      "title": "Concept Art",
+      "images": [
+        {
+          "file": "A girl in a cacti garden.webp",
+          "title": "A Girl In A Cacti Garden"
+        },
+        {
+          "file": "Entry to Narnia.webp",
+          "title": "Entry To Narnia"
+        },
+        {
+          "file": "Huge flower and a girl painting it.webp",
+          "title": "Huge Flower And A Girl Painting It"
+        },
+        {
+          "file": "The_Botherlands Concept map.webp",
+          "title": "The Botherlands Concept Map"
+        },
+        {
+          "file": "boat_people.webp",
+          "title": "Boat People"
+        },
+        {
+          "file": "dragon_cafe_doodle.webp",
+          "title": "Dragon Cafe Doodle"
+        }
+      ]
+    },
+    {
+      "id": "fanart",
+      "title": "Fanart",
+      "images": [
+        {
+          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
+          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
+        },
+        {
+          "file": "Assasins creed Egpyt.webp",
+          "title": "Assasins Creed Egpyt"
+        },
+        {
+          "file": "Baby_Yoda_.webp",
+          "title": "Baby Yoda"
+        },
+        {
+          "file": "Black myth wukong and elden ring fanart.webp",
+          "title": "Black Myth Wukong And Elden Ring Fanart"
+        },
+        {
+          "file": "Black myth wukong fanart.webp",
+          "title": "Black Myth Wukong Fanart"
+        },
+        {
+          "file": "Elden ring + harry potter.webp",
+          "title": "Elden Ring + Harry Potter"
+        },
+        {
+          "file": "Mahabharata fanart.webp",
+          "title": "Mahabharata Fanart"
+        },
+        {
+          "file": "Move, snorlax!.webp",
+          "title": "Move, Snorlax!"
+        },
+        {
+          "file": "Percy jackson chosen.webp",
+          "title": "Percy Jackson Chosen"
+        },
+        {
+          "file": "Sekiro fanart.webp",
+          "title": "Sekiro Fanart"
+        },
+        {
+          "file": "finch fanart for my engagement.webp",
+          "title": "Finch Fanart For My Engagement"
+        },
+        {
+          "file": "genshin zhogli.webp",
+          "title": "Genshin Zhogli"
+        },
+        {
+          "file": "lily from modern family.webp",
+          "title": "Lily From Modern Family"
+        },
+        {
+          "file": "niffler.webp",
+          "title": "Niffler"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "title": "Food",
+      "images": [
+        {
+          "file": "Shrimp ramen.webp",
+          "title": "Shrimp Ramen"
+        },
+        {
+          "file": "mumbday25.webp",
+          "title": "Mumbday25"
+        },
+        {
+          "file": "oranges.webp",
+          "title": "Oranges"
+        },
+        {
+          "file": "ramen 1.webp",
+          "title": "Ramen 1"
+        }
+      ]
+    },
+    {
+      "id": "random",
+      "title": "Random",
+      "images": [
+        {
+          "file": "My Wedding_Card.webp",
+          "title": "My Wedding Card"
+        }
+      ]
+    }
+  ]
+}
