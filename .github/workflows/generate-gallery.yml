@@ -1,0 +1,34 @@
+name: Generate Gallery
+
+on:
+  push:
+    paths:
+      - 'images/**'
+
+jobs:
+  generate-gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run generate_gallery script
+        run: python scripts/generate_gallery.py
+
+      - name: Commit gallery.json if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/gallery.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update gallery.json [skip ci]"
+            git push
+          fi
+
