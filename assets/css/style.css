@@ -1,13 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #1f1f23;        /* soft neutral gray background */
-  --panel: #2a2a2f;     /* slightly darker sections */
-  --fg: #ffffff;        /* main text color */
-  --muted: #b8b8b8;     /* muted / secondary text */
-  --border: #3a3a40;    /* subtle divider color */
-  --accent: #ffffff;    /* accent text or highlight */
+  --bg: #1f1f23;
+  --panel: #2a2a2f;
+  --fg: #ffffff;
+  --muted: #b8b8b8;
+  --border: #3a3a40;
+  --accent: #d4d4ff;       /* soft lavender accent */
+  --link: #8ca6db;         /* soothing light blue-gray link color */
+  --link-hover: #a7bce2;   /* slightly lighter on hover */
 }
+
+a,
+a:visited {
+  color: #ffffff;
+  text-decoration: underline;
+  transition: opacity 0.25s ease;
+}
+
+a:hover,
+a:active {
+  opacity: 0.8;
+}
+
+/* Ensure header links follow the same style */
+.links a,
+.links a:visited {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+.links a:hover,
+.links a:active {
+  opacity: 0.8;
+}
+
 
 * {
   box-sizing: border-box;
