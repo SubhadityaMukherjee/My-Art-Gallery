@@ -125,11 +125,9 @@ let currentIndex = 0;
 function open(index){
   currentIndex = index;
   const img = images[index];
-
   lbImg.src = img.src;
-  lbTitle.textContent = img.dataset.title || ""; // show title if available
+  lbTitle.textContent = img.dataset.title || "";
 
-  // Update URL hash
   const catId = getCategoryFromImage(img);
   const imgIndex = getImageIndexInCategory(img, catId);
   const hash = `#category=${encodeURIComponent(catId)}&index=${imgIndex}`;
@@ -187,7 +185,6 @@ function getGlobalIndexFromCategory(catId, localIndex) {
   }
   return 0;
 }
-
 function handleHashChange() {
   const hash = location.hash;
   if (!hash) return;
@@ -196,41 +193,36 @@ function handleHashChange() {
   const catId = params.get("category");
   const index = parseInt(params.get("index") || "0", 10);
 
-  if (catId) {
-    // Scroll to category
-    const section = document.getElementById(catId);
-    if (section) {
-      // Use a small delay for mobile to ensure DOM is ready
-      const isMobile = window.innerWidth <= 600;
-      const delay = isMobile ? 300 : 100;
-      
-      setTimeout(() => {
-        section.scrollIntoView({ 
-          behavior: "smooth", 
-          block: "start" 
-        });
-        
-        // Open lightbox if index is provided
-        if (!isNaN(index)) {
-          const globalIdx = getGlobalIndexFromCategory(catId, index);
-          if (globalIdx >= 0 && globalIdx < images.length) {
-            // Ensure images array is populated before opening
-            if (images.length > 0) {
-              open(globalIdx);
-            } else {
-              // If images not yet loaded, wait a bit and try again
-              setTimeout(() => {
-                if (images.length > 0) {
-                  open(globalIdx);
-                }
-              }, 200);
-            }
-          }
-        }
-      }, delay);
+  if (!catId) return;
+
+  // Wait until images are fully loaded
+  const waitForImages = () => {
+    if (images.length === 0) {
+      setTimeout(waitForImages, 100);
+      return;
     }
-  }
+
+    const section = document.getElementById(catId);
+    if (!section) return;
+
+    const isMobile = window.innerWidth <= 600;
+    const delay = isMobile ? 300 : 100;
+
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      if (!isNaN(index)) {
+        const globalIdx = getGlobalIndexFromCategory(catId, index);
+        if (globalIdx >= 0 && globalIdx < images.length) {
+          open(globalIdx);
+        }
+      }
+    }, delay);
+  };
+
+  waitForImages();
 }
+
 
 // Enhanced link opening experience
 function enhanceLinkOpening() {
