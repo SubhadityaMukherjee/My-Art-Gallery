@@ -53,11 +53,34 @@ function render(data) {
       el.src = `images/${cat.id}/${img.file}`;
       el.alt = img.title || "";
       el.dataset.title = img.title || "";
+      el.dataset.category = cat.id;
+      el.dataset.filename = img.file;
 
       el.onclick = () => open(images.indexOf(el));
 
       images.push(el);
       fig.appendChild(el);
+      
+      // Add expandable text section
+      const textContainer = document.createElement("div");
+      textContainer.className = "image-text-container";
+      
+      const textButton = document.createElement("button");
+      textButton.className = "text-toggle-btn";
+      textButton.textContent = "Show Description";
+      textButton.onclick = (e) => {
+        e.stopPropagation(); // Prevent opening lightbox when clicking text button
+        toggleImageText(textContainer, textButton, cat.id, img.file);
+      };
+      
+      const textContent = document.createElement("div");
+      textContent.className = "image-text-content";
+      textContent.style.display = "none";
+      
+      textContainer.appendChild(textButton);
+      textContainer.appendChild(textContent);
+      fig.appendChild(textContainer);
+      
       grid.appendChild(fig);
     });
 
@@ -245,6 +268,44 @@ document.addEventListener("keydown", (e) => {
 // Handle initial hash on load
 window.addEventListener("load", handleHashChange);
 window.addEventListener("hashchange", handleHashChange);
+
+// Function to load and toggle image text
+async function toggleImageText(container, button, categoryId, filename) {
+  const textContent = container.querySelector(".image-text-content");
+  
+  if (textContent.style.display === "block") {
+    // Hide text
+    textContent.style.display = "none";
+    button.textContent = "Show Description";
+    return;
+  }
+  
+  // Show loading state
+  button.textContent = "Loading...";
+  
+  try {
+    // Try to load text file with same name as image
+    const textFileUrl = `images/${categoryId}/${filename.replace(/\.[^/.]+$/, "")}.txt`;
+    const response = await fetch(textFileUrl);
+    
+    if (response.ok) {
+      const text = await response.text();
+      textContent.innerHTML = `<p>${text.trim()}</p>`;
+      textContent.style.display = "block";
+      button.textContent = "Hide Description";
+    } else {
+      // No text file found
+      textContent.innerHTML = `<p class="no-text">No description available</p>`;
+      textContent.style.display = "block";
+      button.textContent = "Hide Description";
+    }
+  } catch (error) {
+    console.error("Error loading text:", error);
+    textContent.innerHTML = `<p class="error-text">Error loading description</p>`;
+    textContent.style.display = "block";
+    button.textContent = "Hide Description";
+  }
+}
 
 const mobileToggle = document.createElement("button");
 mobileToggle.className = "mobile-filter-toggle";
