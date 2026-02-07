@@ -5,16 +5,20 @@
       "title": "Animals",
       "images": [
         {
-          "file": "penguin.webp",
-          "title": "Penguin"
-        },
-        {
           "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
           "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
         },
         {
-          "file": "Valentines day mice.webp",
-          "title": "Valentines Day Mice"
+          "file": "penguin.webp",
+          "title": "Penguin"
+        },
+        {
+          "file": "penguin.txt",
+          "title": "Penguin"
+        },
+        {
+          "file": "owl.txt",
+          "title": "Owl"
         },
         {
           "file": "owl.webp",
@@ -25,16 +29,40 @@
           "title": "Magic Kitty"
         },
         {
-          "file": "Ducky with a flower on her head.webp",
-          "title": "Ducky With A Flower On Her Head"
+          "file": "Valentines day mice.webp",
+          "title": "Valentines Day Mice"
+        },
+        {
+          "file": "Valentines day mice.txt",
+          "title": "Valentines Day Mice"
+        },
+        {
+          "file": "Magic kitty.txt",
+          "title": "Magic Kitty"
+        },
+        {
+          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.txt",
+          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
         },
         {
           "file": "Golden retriever puppy with our peace lily.webp",
           "title": "Golden Retriever Puppy With Our Peace Lily"
         },
         {
-          "file": "Cat and dog.webp",
-          "title": "Cat And Dog"
+          "file": "Ducky with a flower on her head.txt",
+          "title": "Ducky With A Flower On Her Head"
+        },
+        {
+          "file": "Detective Feather.txt",
+          "title": "Detective Feather"
+        },
+        {
+          "file": "Golden retriever puppy with our peace lily.txt",
+          "title": "Golden Retriever Puppy With Our Peace Lily"
+        },
+        {
+          "file": "Ducky with a flower on her head.webp",
+          "title": "Ducky With A Flower On Her Head"
         },
         {
           "file": "Christmas_Card_25.webp",
@@ -43,6 +71,18 @@
         {
           "file": "Detective Feather.webp",
           "title": "Detective Feather"
+        },
+        {
+          "file": "Cat and dog.txt",
+          "title": "Cat And Dog"
+        },
+        {
+          "file": "Cat and dog.webp",
+          "title": "Cat And Dog"
+        },
+        {
+          "file": "Christmas_Card_25.txt",
+          "title": "Christmas Card 25"
         }
       ]
     },
@@ -55,6 +95,10 @@
           "title": "Valentines Day Flowers"
         },
         {
+          "file": "treegrandpa.txt",
+          "title": "Treegrandpa"
+        },
+        {
           "file": "Muscle man.webp",
           "title": "Muscle Man"
         },
@@ -63,11 +107,35 @@
           "title": "Treegrandpa"
         },
         {
+          "file": "My grandmother.txt",
+          "title": "My Grandmother"
+        },
+        {
+          "file": "valentines Day flowers.txt",
+          "title": "Valentines Day Flowers"
+        },
+        {
           "file": "My grandmother.webp",
           "title": "My Grandmother"
         },
         {
+          "file": "Character_Practice.webp",
+          "title": "Character Practice"
+        },
+        {
+          "file": "Floaty cathedral lady.txt",
+          "title": "Floaty Cathedral Lady"
+        },
+        {
           "file": "Girl with her tiny animal friends.webp",
+          "title": "Girl With Her Tiny Animal Friends"
+        },
+        {
+          "file": "Muscle man.txt",
+          "title": "Muscle Man"
+        },
+        {
+          "file": "Girl with her tiny animal friends.txt",
           "title": "Girl With Her Tiny Animal Friends"
         },
         {
@@ -75,7 +143,7 @@
           "title": "Floaty Cathedral Lady"
         },
         {
-          "file": "Character_Practice.webp",
+          "file": "Character_Practice.txt",
           "title": "Character Practice"
         }
       ]
@@ -85,8 +153,20 @@
       "title": "Concept Art",
       "images": [
         {
+          "file": "Ugh_That's_A_Huge_Bug.txt",
+          "title": "Ugh That'S A Huge Bug"
+        },
+        {
+          "file": "dragon_cafe_doodle.txt",
+          "title": "Dragon Cafe Doodle"
+        },
+        {
           "file": "dragon_cafe_doodle.webp",
           "title": "Dragon Cafe Doodle"
+        },
+        {
+          "file": "boat_people.txt",
+          "title": "Boat People"
         },
         {
           "file": "boat_people.webp",
@@ -101,15 +181,31 @@
           "title": "The Botherlands Concept Map"
         },
         {
-          "file": "Entry to Narnia.webp",
-          "title": "Entry To Narnia"
-        },
-        {
           "file": "Huge flower and a girl painting it.webp",
           "title": "Huge Flower And A Girl Painting It"
         },
         {
+          "file": "The_Botherlands Concept map.txt",
+          "title": "The Botherlands Concept Map"
+        },
+        {
+          "file": "Entry to Narnia.webp",
+          "title": "Entry To Narnia"
+        },
+        {
+          "file": "Huge flower and a girl painting it.txt",
+          "title": "Huge Flower And A Girl Painting It"
+        },
+        {
+          "file": "Entry to Narnia.txt",
+          "title": "Entry To Narnia"
+        },
+        {
           "file": "A girl in a cacti garden.webp",
+          "title": "A Girl In A Cacti Garden"
+        },
+        {
+          "file": "A girl in a cacti garden.txt",
           "title": "A Girl In A Cacti Garden"
         }
       ]
@@ -119,6 +215,10 @@
       "title": "Fanart",
       "images": [
         {
+          "file": "lily from modern family.txt",
+          "title": "Lily From Modern Family"
+        },
+        {
           "file": "niffler.webp",
           "title": "Niffler"
         },
@@ -127,7 +227,23 @@
           "title": "Lily From Modern Family"
         },
         {
+          "file": "niffler.txt",
+          "title": "Niffler"
+        },
+        {
           "file": "finch fanart for my engagement.webp",
+          "title": "Finch Fanart For My Engagement"
+        },
+        {
+          "file": "genshin zhogli.txt",
+          "title": "Genshin Zhogli"
+        },
+        {
+          "file": "Sekiro fanart.webp",
+          "title": "Sekiro Fanart"
+        },
+        {
+          "file": "finch fanart for my engagement.txt",
           "title": "Finch Fanart For My Engagement"
         },
         {
@@ -135,8 +251,12 @@
           "title": "Genshin Zhogli"
         },
         {
-          "file": "Sekiro fanart.webp",
+          "file": "Sekiro fanart.txt",
           "title": "Sekiro Fanart"
+        },
+        {
+          "file": "Pokemon_And_The_House_Of_Hades.txt",
+          "title": "Pokemon And The House Of Hades"
         },
         {
           "file": "Pokemon_And_The_House_Of_Hades.png",
@@ -151,16 +271,36 @@
           "title": "Percy Jackson Chosen"
         },
         {
-          "file": "It's_Cold_Today.jpg",
-          "title": "It'S Cold Today"
+          "file": "Percy jackson chosen.txt",
+          "title": "Percy Jackson Chosen"
+        },
+        {
+          "file": "Mahabharata fanart.txt",
+          "title": "Mahabharata Fanart"
         },
         {
           "file": "Mahabharata fanart.webp",
           "title": "Mahabharata Fanart"
         },
         {
+          "file": "Move, snorlax!.txt",
+          "title": "Move, Snorlax!"
+        },
+        {
+          "file": "Move",
+          "title": "Move"
+        },
+        {
           "file": "It's_Cold_Today.txt",
           "title": "It'S Cold Today"
+        },
+        {
+          "file": "It's_Cold_Today.jpg",
+          "title": "It'S Cold Today"
+        },
+        {
+          "file": "Elden ring + harry potter.txt",
+          "title": "Elden Ring + Harry Potter"
         },
         {
           "file": "Elden ring + harry potter.webp",
@@ -171,19 +311,43 @@
           "title": "Black Myth Wukong Fanart"
         },
         {
+          "file": "Black myth wukong and elden ring fanart.txt",
+          "title": "Black Myth Wukong And Elden Ring Fanart"
+        },
+        {
+          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
+          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
+        },
+        {
+          "file": "Assasins creed Egpyt.txt",
+          "title": "Assasins Creed Egpyt"
+        },
+        {
           "file": "Black myth wukong and elden ring fanart.webp",
           "title": "Black Myth Wukong And Elden Ring Fanart"
+        },
+        {
+          "file": "Baby_Yoda_.txt\"",
+          "title": "Baby Yoda"
         },
         {
           "file": "Assasins creed Egpyt.webp",
           "title": "Assasins Creed Egpyt"
         },
         {
+          "file": "Black myth wukong fanart.txt",
+          "title": "Black Myth Wukong Fanart"
+        },
+        {
           "file": "Baby_Yoda_.webp",
           "title": "Baby Yoda"
         },
         {
-          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
+          "file": "2025 finale cake",
+          "title": "2025 Finale Cake"
+        },
+        {
+          "file": "2025 finale cake, animals genshin, hsr fanart.txt",
           "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
         }
       ]
@@ -197,12 +361,28 @@
           "title": "Ramen 1"
         },
         {
+          "file": "ramen 1.txt",
+          "title": "Ramen 1"
+        },
+        {
           "file": "oranges.webp",
           "title": "Oranges"
         },
         {
+          "file": "mumbday25.txt",
+          "title": "Mumbday25"
+        },
+        {
+          "file": "Shrimp ramen.txt",
+          "title": "Shrimp Ramen"
+        },
+        {
           "file": "mumbday25.webp",
           "title": "Mumbday25"
+        },
+        {
+          "file": "oranges.txt",
+          "title": "Oranges"
         },
         {
           "file": "Shrimp ramen.webp",
@@ -210,6 +390,10 @@
         },
         {
           "file": "Dim sum.jpeg",
+          "title": "Dim Sum"
+        },
+        {
+          "file": "Dim sum.txt",
           "title": "Dim Sum"
         }
       ]
@@ -220,6 +404,10 @@
       "images": [
         {
           "file": "My Wedding_Card.webp",
+          "title": "My Wedding Card"
+        },
+        {
+          "file": "My Wedding_Card.txt",
           "title": "My Wedding Card"
         }
       ]
