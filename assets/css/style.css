@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #1f1f23;
-  --panel: #2a2a2f;
+  --bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  --panel: rgba(255, 255, 255, 0.05);
   --fg: #ffffff;
-  --muted: #b8b8b8;
-  --border: #3a3a40;
-  --accent: #d4d4ff;       /* soft lavender accent */
-  --link: #8ca6db;         /* soothing light blue-gray link color */
-  --link-hover: #a7bce2;   /* slightly lighter on hover */
+  --muted: rgba(255, 255, 255, 0.7);
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: linear-gradient(135deg, #8e44ad, #3498db);
+  --link: #8ca6db;
+  --link-hover: #a7bce2;
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --glass-backdrop: backdrop-filter: blur(10px);
 }
 
 a,
@@ -62,6 +64,8 @@ body {
   border-bottom: 1px solid var(--border);
   text-align: center;
   padding: 2rem 0;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(10px);
 }
 
 .site-header h1 {
@@ -199,19 +203,26 @@ figure {
   margin: 0;
   position: relative;
   transition: transform 0.3s ease;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(5px);
 }
 
 figure:hover {
   transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 img {
   width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #121214;
   transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
+  opacity: 1;
 }
 
 img:hover {
@@ -234,6 +245,8 @@ figcaption {
   position: fixed;
   inset: 0;
   z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
 }
 #lightbox .overlay {
   position: absolute;
@@ -250,9 +263,10 @@ figcaption {
   transform: translate(-50%, -50%);
   max-width: 92%;
   max-height: 85%;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   object-fit: contain;
   z-index: 1002;
+  border-radius: 12px;
 }
 
 #lightbox .nav {
@@ -260,19 +274,25 @@ figcaption {
   top: 50%;
   transform: translateY(-50%);
   font-size: 3rem;
-  color: #ccc;
-  background: none;
-  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   padding: 0 1rem;
   z-index: 1003;
-  transition: color 0.25s;
+  transition: all 0.25s ease;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
 }
 
 #lightbox .prev { left: 1rem; }
 #lightbox .next { right: 1rem; }
 
-#lightbox .nav:hover { color: #fff; }
+#lightbox .nav:hover { 
+  color: #fff; 
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
 
 #lightbox .caption {
   position: absolute;
@@ -288,6 +308,11 @@ figcaption {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .share-btn {
@@ -300,12 +325,15 @@ figcaption {
   font-weight: 500;
   font-size: 0.85rem;
   transition: all 0.2s ease;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(5px);
 }
 
 .share-btn:hover {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 /* Image text sections */
@@ -324,12 +352,15 @@ figcaption {
   font-size: 0.875rem;
   transition: all 0.2s ease;
   font-weight: 500;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(5px);
 }
 
 .text-toggle-btn:hover {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .image-text-content {
@@ -337,11 +368,13 @@ figcaption {
   padding: 0.75rem;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 0.9rem;
   line-height: 1.4;
   color: var(--fg);
   transition: all 0.3s ease;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(5px);
 }
 
 .image-text-content p {

@@ -74,7 +74,7 @@ function render(data) {
             
             const textButton = document.createElement("button");
             textButton.className = "text-toggle-btn";
-            textButton.textContent = "Show Description";
+            textButton.textContent = "Show Story";
             textButton.onclick = (e) => {
               e.stopPropagation(); // Prevent opening lightbox when clicking text button
               toggleImageText(textContainer, textButton, cat.id, img.file);
@@ -325,7 +325,7 @@ async function toggleImageText(container, button, categoryId, filename) {
   if (textContent.style.display === "block") {
     // Hide text
     textContent.style.display = "none";
-    button.textContent = "Show Description";
+    button.textContent = "Show Story";
     return;
   }
   
@@ -341,18 +341,18 @@ async function toggleImageText(container, button, categoryId, filename) {
       const text = await response.text();
       textContent.innerHTML = `<p>${text.trim()}</p>`;
       textContent.style.display = "block";
-      button.textContent = "Hide Description";
+      button.textContent = "Hide Story";
     } else {
       // No text file found
-      textContent.innerHTML = `<p class="no-text">No description available</p>`;
+      textContent.innerHTML = `<p class="no-text">No Story available</p>`;
       textContent.style.display = "block";
-      button.textContent = "Hide Description";
+      button.textContent = "Hide Story";
     }
   } catch (error) {
     console.error("Error loading text:", error);
-    textContent.innerHTML = `<p class="error-text">Error loading description</p>`;
+    textContent.innerHTML = `<p class="error-text">Error loading Story</p>`;
     textContent.style.display = "block";
-    button.textContent = "Hide Description";
+    button.textContent = "Hide Story";
   }
 }
 
