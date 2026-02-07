@@ -165,25 +165,34 @@ function handleHashChange() {
     // Scroll to category
     const section = document.getElementById(catId);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-
-    // Open lightbox if index is provided
-    if (!isNaN(index)) {
-      const globalIdx = getGlobalIndexFromCategory(catId, index);
-      if (globalIdx >= 0 && globalIdx < images.length) {
-        // Ensure images array is populated before opening
-        if (images.length > 0) {
-          open(globalIdx);
-        } else {
-          // If images not yet loaded, wait a bit and try again
-          setTimeout(() => {
+      // Use a small delay for mobile to ensure DOM is ready
+      const isMobile = window.innerWidth <= 600;
+      const delay = isMobile ? 300 : 100;
+      
+      setTimeout(() => {
+        section.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "start" 
+        });
+        
+        // Open lightbox if index is provided
+        if (!isNaN(index)) {
+          const globalIdx = getGlobalIndexFromCategory(catId, index);
+          if (globalIdx >= 0 && globalIdx < images.length) {
+            // Ensure images array is populated before opening
             if (images.length > 0) {
               open(globalIdx);
+            } else {
+              // If images not yet loaded, wait a bit and try again
+              setTimeout(() => {
+                if (images.length > 0) {
+                  open(globalIdx);
+                }
+              }, 200);
             }
-          }, 100);
+          }
         }
-      }
+      }, delay);
     }
   }
 }
