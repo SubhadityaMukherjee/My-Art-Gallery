@@ -301,6 +301,54 @@ figcaption {
   border-color: var(--accent);
 }
 
+/* Image text sections */
+.image-text-container {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.text-toggle-btn {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.text-toggle-btn:hover {
+  background: #e0e0e0;
+  border-color: #bbb;
+}
+
+.image-text-content {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.image-text-content p {
+  margin: 0;
+}
+
+.image-text-content .no-text {
+  color: #888;
+  font-style: italic;
+}
+
+.image-text-content .error-text {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
 body.lightbox-open {
   overflow: hidden;
 }
