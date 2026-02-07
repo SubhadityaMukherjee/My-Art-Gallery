@@ -172,7 +172,17 @@ function handleHashChange() {
     if (!isNaN(index)) {
       const globalIdx = getGlobalIndexFromCategory(catId, index);
       if (globalIdx >= 0 && globalIdx < images.length) {
-        open(globalIdx);
+        // Ensure images array is populated before opening
+        if (images.length > 0) {
+          open(globalIdx);
+        } else {
+          // If images not yet loaded, wait a bit and try again
+          setTimeout(() => {
+            if (images.length > 0) {
+              open(globalIdx);
+            }
+          }, 100);
+        }
       }
     }
   }
