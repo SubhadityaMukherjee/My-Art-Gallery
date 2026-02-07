@@ -228,11 +228,9 @@ img {
   border-radius: 8px;
   background: #121214;
   transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-}
-img.loaded {
   opacity: 1;
 }
+
 
 img:hover {
   transform: scale(1.015);
