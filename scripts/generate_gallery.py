@@ -25,6 +25,7 @@ for category_dir in sorted(IMAGES_DIR.iterdir()):
     images_files = [
         f for f in category_dir.iterdir() if f.is_file() and not f.name.startswith(".")
     ]
+    images_files = [f for f in images_files if f.suffix.lower() in {".jpg", ".jpeg", ".png", ".gif", ".webp"}]
     images_files.sort(key=lambda f: f.stat().st_ctime, reverse=True)
 
     images = [

@@ -128,15 +128,13 @@ let currentIndex = 0;
 function open(index) {
   currentIndex = index;
   const img = images[index];
-
-  if (!img) return;
-
   lbImg.src = img.src;
   lbTitle.textContent = img.dataset.title || "";
 
-  // Stable, shareable hash
-  const imgId = img.dataset.id;
-  history.replaceState(null, "", `#img=${encodeURIComponent(imgId)}`);
+  const catId = getCategoryFromImage(img);
+  const imgIndex = getImageIndexInCategory(img, catId);
+  const hash = `#category=${encodeURIComponent(catId)}&index=${imgIndex}`;
+  history.replaceState(null, "", hash);
 
   lightbox.hidden = false;
   document.body.classList.add("lightbox-open");
@@ -173,15 +171,48 @@ function openFromHash() {
       requestAnimationFrame(tryOpen);
       return;
     }
+  }
+  return 0;
+}
+function handleHashChange() {
+  const hash = location.hash;
+  if (!hash) return;
 
-    const index = images.findIndex(img => img.dataset.id === imgId);
-    if (index !== -1) {
-      open(index);
+  const params = new URLSearchParams(hash.slice(1));
+  const catId = params.get("category");
+  const index = parseInt(params.get("index") || "0", 10);
+
+  if (!catId) return;
+
+  // Wait until images are fully loaded
+  const waitForImages = () => {
+    if (images.length === 0) {
+      setTimeout(waitForImages, 100);
+      return;
     }
+
+    const section = document.getElementById(catId);
+    if (!section) return;
+
+    const isMobile = window.innerWidth <= 600;
+    const delay = isMobile ? 300 : 100;
+
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      if (!isNaN(index)) {
+        const globalIdx = getGlobalIndexFromCategory(catId, index);
+        if (globalIdx >= 0 && globalIdx < images.length) {
+          open(globalIdx);
+        }
+      }
+    }, delay);
   };
 
-  tryOpen();
+  waitForImages();
 }
+
+
 // Enhanced link opening experience
 function enhanceLinkOpening() {
   // Add smooth transitions to images
