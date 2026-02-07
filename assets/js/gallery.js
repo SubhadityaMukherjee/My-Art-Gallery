@@ -197,15 +197,30 @@ function handleHashChange() {
   }
 }
 
-// Share button
+// New function to generate shareable URL for current image
+function generateShareableUrl() {
+  if (lightbox.hidden) return location.href;
+  
+  const img = images[currentIndex];
+  if (!img) return location.href;
+
+  const catId = getCategoryFromImage(img);
+  const imgIndex = getImageIndexInCategory(img, catId);
+  const url = new URL(location.href);
+  url.hash = `category=${encodeURIComponent(catId)}&index=${imgIndex}`;
+  return url.toString();
+}
+
+// Enhanced share button functionality
 lbShare.onclick = () => {
-  const url = location.href;
+  const shareUrl = generateShareableUrl();
   if (navigator.share) {
-    navigator.share({ url });
+    navigator.share({ url: shareUrl });
   } else {
-    navigator.clipboard.writeText(url).then(() => alert("Link copied to clipboard"));
+    navigator.clipboard.writeText(shareUrl).then(() => alert("Link copied to clipboard"));
   }
 };
+
 
 document.querySelector("#lightbox .next").onclick = next;
 document.querySelector("#lightbox .prev").onclick = prev;
