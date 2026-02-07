@@ -198,6 +198,11 @@ body {
 figure {
   margin: 0;
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+figure:hover {
+  transform: translateY(-4px);
 }
 
 img {
@@ -205,12 +210,14 @@ img {
   height: auto;
   border-radius: 6px;
   background: #121214;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
 }
 
 img:hover {
   transform: scale(1.015);
   opacity: 0.95;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 figcaption {
@@ -308,30 +315,32 @@ figcaption {
 }
 
 .text-toggle-btn {
-  background: #f0f0f0;
-  border: 1px solid #ccc;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--fg);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.875rem;
-  color: #333;
   transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .text-toggle-btn:hover {
-  background: #e0e0e0;
-  border-color: #bbb;
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
 }
 
 .image-text-content {
   margin-top: 0.5rem;
   padding: 0.75rem;
-  background: #fafafa;
-  border: 1px solid #eee;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 4px;
   font-size: 0.9rem;
   line-height: 1.4;
-  color: #555;
+  color: var(--fg);
   transition: all 0.3s ease;
 }
 
@@ -340,12 +349,12 @@ figcaption {
 }
 
 .image-text-content .no-text {
-  color: #888;
+  color: var(--muted);
   font-style: italic;
 }
 
 .image-text-content .error-text {
-  color: #d32f2f;
+  color: #ff6b6b;
   font-weight: bold;
 }
 
