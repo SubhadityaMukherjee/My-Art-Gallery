@@ -5,83 +5,43 @@
       "title": "Animals",
       "images": [
         {
-          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
-          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
-        },
-        {
           "file": "penguin.webp",
           "title": "Penguin"
-        },
-        {
-          "file": "penguin.txt",
-          "title": "Penguin"
-        },
-        {
-          "file": "owl.txt",
-          "title": "Owl"
         },
         {
           "file": "owl.webp",
           "title": "Owl"
         },
         {
-          "file": "Magic kitty.webp",
-          "title": "Magic Kitty"
+          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
+          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
         },
         {
           "file": "Valentines day mice.webp",
           "title": "Valentines Day Mice"
         },
         {
-          "file": "Valentines day mice.txt",
-          "title": "Valentines Day Mice"
-        },
-        {
-          "file": "Magic kitty.txt",
+          "file": "Magic kitty.webp",
           "title": "Magic Kitty"
-        },
-        {
-          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.txt",
-          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
-        },
-        {
-          "file": "Golden retriever puppy with our peace lily.webp",
-          "title": "Golden Retriever Puppy With Our Peace Lily"
-        },
-        {
-          "file": "Ducky with a flower on her head.txt",
-          "title": "Ducky With A Flower On Her Head"
-        },
-        {
-          "file": "Detective Feather.txt",
-          "title": "Detective Feather"
-        },
-        {
-          "file": "Golden retriever puppy with our peace lily.txt",
-          "title": "Golden Retriever Puppy With Our Peace Lily"
         },
         {
           "file": "Ducky with a flower on her head.webp",
           "title": "Ducky With A Flower On Her Head"
         },
         {
-          "file": "Christmas_Card_25.webp",
-          "title": "Christmas Card 25"
+          "file": "Golden retriever puppy with our peace lily.webp",
+          "title": "Golden Retriever Puppy With Our Peace Lily"
         },
         {
           "file": "Detective Feather.webp",
           "title": "Detective Feather"
         },
         {
-          "file": "Cat and dog.txt",
-          "title": "Cat And Dog"
-        },
-        {
           "file": "Cat and dog.webp",
           "title": "Cat And Dog"
         },
         {
-          "file": "Christmas_Card_25.txt",
+          "file": "Christmas_Card_25.webp",
           "title": "Christmas Card 25"
         }
       ]
@@ -95,12 +55,16 @@
           "title": "Treegrandpa"
         },
         {
+          "file": "My grandmother.webp",
+          "title": "My Grandmother"
+        },
+        {
           "file": "valentines Day flowers.webp",
           "title": "Valentines Day Flowers"
         },
         {
-          "file": "treegrandpa.txt",
-          "title": "Treegrandpa"
+          "file": "Character_Practice.webp",
+          "title": "Character Practice"
         },
         {
           "file": "Muscle man.webp",
@@ -111,24 +75,8 @@
           "title": "Girl With Her Tiny Animal Friends"
         },
         {
-          "file": "My grandmother.txt",
-          "title": "My Grandmother"
-        },
-        {
-          "file": "valentines Day flowers.txt",
-          "title": "Valentines Day Flowers"
-        },
-        {
-          "file": "My grandmother.webp",
-          "title": "My Grandmother"
-        },
-        {
           "file": "Floaty cathedral lady.webp",
           "title": "Floaty Cathedral Lady"
-        },
-        {
-          "file": "Character_Practice.txt",
-          "title": "Character Practice"
         }
       ]
     },
@@ -137,20 +85,8 @@
       "title": "Concept Art",
       "images": [
         {
-          "file": "Ugh_That's_A_Huge_Bug.txt",
-          "title": "Ugh That'S A Huge Bug"
-        },
-        {
-          "file": "dragon_cafe_doodle.txt",
-          "title": "Dragon Cafe Doodle"
-        },
-        {
           "file": "dragon_cafe_doodle.webp",
           "title": "Dragon Cafe Doodle"
-        },
-        {
-          "file": "boat_people.txt",
-          "title": "Boat People"
         },
         {
           "file": "boat_people.webp",
@@ -165,31 +101,15 @@
           "title": "The Botherlands Concept Map"
         },
         {
-          "file": "Huge flower and a girl painting it.webp",
-          "title": "Huge Flower And A Girl Painting It"
-        },
-        {
-          "file": "The_Botherlands Concept map.txt",
-          "title": "The Botherlands Concept Map"
-        },
-        {
           "file": "Entry to Narnia.webp",
           "title": "Entry To Narnia"
         },
         {
-          "file": "Huge flower and a girl painting it.txt",
+          "file": "Huge flower and a girl painting it.webp",
           "title": "Huge Flower And A Girl Painting It"
         },
         {
-          "file": "Entry to Narnia.txt",
-          "title": "Entry To Narnia"
-        },
-        {
           "file": "A girl in a cacti garden.webp",
-          "title": "A Girl In A Cacti Garden"
-        },
-        {
-          "file": "A girl in a cacti garden.txt",
           "title": "A Girl In A Cacti Garden"
         }
       ]
@@ -199,16 +119,8 @@
       "title": "Fanart",
       "images": [
         {
-          "file": "lily from modern family.txt",
-          "title": "Lily From Modern Family"
-        },
-        {
           "file": "niffler.webp",
           "title": "Niffler"
-        },
-        {
-          "file": "finch fanart for my engagement.webp",
-          "title": "Finch Fanart For My Engagement"
         },
         {
           "file": "lily from modern family.webp",
@@ -219,24 +131,12 @@
           "title": "Genshin Zhogli"
         },
         {
-          "file": "Sekiro fanart.webp",
-          "title": "Sekiro Fanart"
-        },
-        {
-          "file": "finch fanart for my engagement.txt",
+          "file": "finch fanart for my engagement.webp",
           "title": "Finch Fanart For My Engagement"
         },
         {
-          "file": "genshin zhogli.webp",
-          "title": "Genshin Zhogli"
-        },
-        {
-          "file": "Sekiro fanart.txt",
+          "file": "Sekiro fanart.webp",
           "title": "Sekiro Fanart"
-        },
-        {
-          "file": "Pokemon_And_The_House_Of_Hades.txt",
-          "title": "Pokemon And The House Of Hades"
         },
         {
           "file": "Pokemon_And_The_House_Of_Hades.png",
@@ -251,36 +151,16 @@
           "title": "Percy Jackson Chosen"
         },
         {
-          "file": "Its_Cold_Today.jpg",
-          "title": "Its Cold Today"
-        },
-        {
           "file": "Mahabharata fanart.webp",
           "title": "Mahabharata Fanart"
         },
         {
+          "file": "Its_Cold_Today.jpg",
+          "title": "Its Cold Today"
+        },
+        {
           "file": "Elden ring + harry potter.webp",
           "title": "Elden Ring + Harry Potter"
-        },
-        {
-          "file": "Black myth wukong and elden ring fanart.webp",
-          "title": "Black Myth Wukong And Elden Ring Fanart"
-        },
-        {
-          "file": "Baby_Yoda_.txt\"",
-          "title": "Baby Yoda"
-        },
-        {
-          "file": "Assasins creed Egpyt.webp",
-          "title": "Assasins Creed Egpyt"
-        },
-        {
-          "file": "Black myth wukong fanart.txt",
-          "title": "Black Myth Wukong Fanart"
-        },
-        {
-          "file": "Baby_Yoda_.webp",
-          "title": "Baby Yoda"
         },
         {
           "file": "Black myth wukong fanart.webp",
@@ -289,6 +169,18 @@
         {
           "file": "2025 finale cake, animals genshin, hsr fanart.webp",
           "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
+        },
+        {
+          "file": "Black myth wukong and elden ring fanart.webp",
+          "title": "Black Myth Wukong And Elden Ring Fanart"
+        },
+        {
+          "file": "Assasins creed Egpyt.webp",
+          "title": "Assasins Creed Egpyt"
+        },
+        {
+          "file": "Baby_Yoda_.webp",
+          "title": "Baby Yoda"
         }
       ]
     },
@@ -324,10 +216,6 @@
       "images": [
         {
           "file": "My Wedding_Card.webp",
-          "title": "My Wedding Card"
-        },
-        {
-          "file": "My Wedding_Card.txt",
           "title": "My Wedding Card"
         }
       ]
