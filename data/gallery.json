@@ -91,6 +91,10 @@
       "title": "Character Design",
       "images": [
         {
+          "file": "treegrandpa.webp",
+          "title": "Treegrandpa"
+        },
+        {
           "file": "valentines Day flowers.webp",
           "title": "Valentines Day Flowers"
         },
@@ -103,8 +107,8 @@
           "title": "Muscle Man"
         },
         {
-          "file": "treegrandpa.webp",
-          "title": "Treegrandpa"
+          "file": "Girl with her tiny animal friends.webp",
+          "title": "Girl With Her Tiny Animal Friends"
         },
         {
           "file": "My grandmother.txt",
@@ -117,26 +121,6 @@
         {
           "file": "My grandmother.webp",
           "title": "My Grandmother"
-        },
-        {
-          "file": "Character_Practice.webp",
-          "title": "Character Practice"
-        },
-        {
-          "file": "Floaty cathedral lady.txt",
-          "title": "Floaty Cathedral Lady"
-        },
-        {
-          "file": "Girl with her tiny animal friends.webp",
-          "title": "Girl With Her Tiny Animal Friends"
-        },
-        {
-          "file": "Muscle man.txt",
-          "title": "Muscle Man"
-        },
-        {
-          "file": "Girl with her tiny animal friends.txt",
-          "title": "Girl With Her Tiny Animal Friends"
         },
         {
           "file": "Floaty cathedral lady.webp",
@@ -223,19 +207,15 @@
           "title": "Niffler"
         },
         {
-          "file": "lily from modern family.webp",
-          "title": "Lily From Modern Family"
-        },
-        {
-          "file": "niffler.txt",
-          "title": "Niffler"
-        },
-        {
           "file": "finch fanart for my engagement.webp",
           "title": "Finch Fanart For My Engagement"
         },
         {
-          "file": "genshin zhogli.txt",
+          "file": "lily from modern family.webp",
+          "title": "Lily From Modern Family"
+        },
+        {
+          "file": "genshin zhogli.webp",
           "title": "Genshin Zhogli"
         },
         {
@@ -271,56 +251,16 @@
           "title": "Percy Jackson Chosen"
         },
         {
-          "file": "Percy jackson chosen.txt",
-          "title": "Percy Jackson Chosen"
-        },
-        {
-          "file": "Mahabharata fanart.txt",
-          "title": "Mahabharata Fanart"
+          "file": "Its_Cold_Today.jpg",
+          "title": "Its Cold Today"
         },
         {
           "file": "Mahabharata fanart.webp",
           "title": "Mahabharata Fanart"
         },
         {
-          "file": "Move, snorlax!.txt",
-          "title": "Move, Snorlax!"
-        },
-        {
-          "file": "Move",
-          "title": "Move"
-        },
-        {
-          "file": "It's_Cold_Today.txt",
-          "title": "It'S Cold Today"
-        },
-        {
-          "file": "It's_Cold_Today.jpg",
-          "title": "It'S Cold Today"
-        },
-        {
-          "file": "Elden ring + harry potter.txt",
-          "title": "Elden Ring + Harry Potter"
-        },
-        {
           "file": "Elden ring + harry potter.webp",
           "title": "Elden Ring + Harry Potter"
-        },
-        {
-          "file": "Black myth wukong fanart.webp",
-          "title": "Black Myth Wukong Fanart"
-        },
-        {
-          "file": "Black myth wukong and elden ring fanart.txt",
-          "title": "Black Myth Wukong And Elden Ring Fanart"
-        },
-        {
-          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
-          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
-        },
-        {
-          "file": "Assasins creed Egpyt.txt",
-          "title": "Assasins Creed Egpyt"
         },
         {
           "file": "Black myth wukong and elden ring fanart.webp",
@@ -343,11 +283,11 @@
           "title": "Baby Yoda"
         },
         {
-          "file": "2025 finale cake",
-          "title": "2025 Finale Cake"
+          "file": "Black myth wukong fanart.webp",
+          "title": "Black Myth Wukong Fanart"
         },
         {
-          "file": "2025 finale cake, animals genshin, hsr fanart.txt",
+          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
           "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
         }
       ]
@@ -361,40 +301,20 @@
           "title": "Ramen 1"
         },
         {
-          "file": "ramen 1.txt",
-          "title": "Ramen 1"
+          "file": "mumbday25.webp",
+          "title": "Mumbday25"
         },
         {
           "file": "oranges.webp",
           "title": "Oranges"
         },
         {
-          "file": "mumbday25.txt",
-          "title": "Mumbday25"
-        },
-        {
-          "file": "Shrimp ramen.txt",
-          "title": "Shrimp Ramen"
-        },
-        {
-          "file": "mumbday25.webp",
-          "title": "Mumbday25"
-        },
-        {
-          "file": "oranges.txt",
-          "title": "Oranges"
-        },
-        {
-          "file": "Shrimp ramen.webp",
-          "title": "Shrimp Ramen"
-        },
-        {
           "file": "Dim sum.jpeg",
           "title": "Dim Sum"
         },
         {
-          "file": "Dim sum.txt",
-          "title": "Dim Sum"
+          "file": "Shrimp ramen.webp",
+          "title": "Shrimp Ramen"
         }
       ]
     },
