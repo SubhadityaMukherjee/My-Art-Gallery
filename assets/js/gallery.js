@@ -84,6 +84,7 @@ document.addEventListener("contextmenu", e => {
 const lightbox = document.getElementById("lightbox");
 const lbImg = document.getElementById("lightbox-img");
 const lbTitle = document.getElementById("lightbox-title");
+const lbShare = document.getElementById("lightbox-share");
 let currentIndex = 0;
 
 function open(index){
@@ -93,6 +94,12 @@ function open(index){
   lbImg.src = img.src;
   lbTitle.textContent = img.dataset.title || ""; // show title if available
 
+  // Update URL hash
+  const catId = getCategoryFromImage(img);
+  const imgIndex = getImageIndexInCategory(img, catId);
+  const hash = `#category=${encodeURIComponent(catId)}&index=${imgIndex}`;
+  history.replaceState(null, "", hash);
+
   lightbox.hidden = false;
   document.body.classList.add("lightbox-open");
 }
@@ -100,6 +107,8 @@ function open(index){
 function close(){
   lightbox.hidden = true;
   document.body.classList.remove("lightbox-open");
+  // Clear hash on close
+  history.replaceState(null, "", location.pathname + location.search);
 }
 
 function next(){
@@ -109,6 +118,75 @@ function next(){
 function prev(){
   open((currentIndex - 1 + images.length) % images.length);
 }
+
+function getCategoryFromImage(img) {
+  // Find the parent section (category)
+  let parent = img.closest("section.category");
+  return parent ? parent.id : "all";
+}
+
+function getImageIndexInCategory(img, catId) {
+  if (catId === "all") return currentIndex;
+
+  const section = document.getElementById(catId);
+  if (!section) return 0;
+
+  const categoryImages = Array.from(section.querySelectorAll("img"));
+  return categoryImages.indexOf(img);
+}
+
+function getGlobalIndexFromCategory(catId, localIndex) {
+  if (catId === "all") return localIndex;
+
+  let globalIndex = 0;
+  const sections = document.querySelectorAll("section.category");
+  for (const s of sections) {
+    if (s.id === catId) {
+      const imgs = Array.from(s.querySelectorAll("img"));
+      if (localIndex < imgs.length) {
+        return globalIndex + localIndex;
+      }
+    } else {
+      globalIndex += s.querySelectorAll("img").length;
+    }
+  }
+  return 0;
+}
+
+function handleHashChange() {
+  const hash = location.hash;
+  if (!hash) return;
+
+  const params = new URLSearchParams(hash.slice(1));
+  const catId = params.get("category");
+  const index = parseInt(params.get("index") || "0", 10);
+
+  if (catId) {
+    // Scroll to category
+    const section = document.getElementById(catId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Open lightbox if index is provided
+    if (!isNaN(index)) {
+      const globalIdx = getGlobalIndexFromCategory(catId, index);
+      if (globalIdx >= 0 && globalIdx < images.length) {
+        open(globalIdx);
+      }
+    }
+  }
+}
+
+// Share button
+lbShare.onclick = () => {
+  const url = location.href;
+  if (navigator.share) {
+    navigator.share({ url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => alert("Link copied to clipboard"));
+  }
+};
 
 document.querySelector("#lightbox .next").onclick = next;
 document.querySelector("#lightbox .prev").onclick = prev;
@@ -129,6 +207,10 @@ document.addEventListener("keydown", (e) => {
       break;
   }
 });
+
+// Handle initial hash on load
+window.addEventListener("load", handleHashChange);
+window.addEventListener("hashchange", handleHashChange);
 
 const mobileToggle = document.createElement("button");
 mobileToggle.className = "mobile-filter-toggle";
