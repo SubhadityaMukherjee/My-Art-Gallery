@@ -61,25 +61,37 @@ function render(data) {
       images.push(el);
       fig.appendChild(el);
       
-      // Add expandable text section
-      const textContainer = document.createElement("div");
-      textContainer.className = "image-text-container";
+      // Check if text file exists before adding text section
+      const textFileName = img.file.replace(/\.[^/.]+$/, "") + ".txt";
+      const textFileUrl = `images/${cat.id}/${textFileName}`;
       
-      const textButton = document.createElement("button");
-      textButton.className = "text-toggle-btn";
-      textButton.textContent = "Show Description";
-      textButton.onclick = (e) => {
-        e.stopPropagation(); // Prevent opening lightbox when clicking text button
-        toggleImageText(textContainer, textButton, cat.id, img.file);
-      };
-      
-      const textContent = document.createElement("div");
-      textContent.className = "image-text-content";
-      textContent.style.display = "none";
-      
-      textContainer.appendChild(textButton);
-      textContainer.appendChild(textContent);
-      fig.appendChild(textContainer);
+      fetch(textFileUrl, { method: 'HEAD' })
+        .then(response => {
+          if (response.ok) {
+            // Text file exists, add text section
+            const textContainer = document.createElement("div");
+            textContainer.className = "image-text-container";
+            
+            const textButton = document.createElement("button");
+            textButton.className = "text-toggle-btn";
+            textButton.textContent = "Show Description";
+            textButton.onclick = (e) => {
+              e.stopPropagation(); // Prevent opening lightbox when clicking text button
+              toggleImageText(textContainer, textButton, cat.id, img.file);
+            };
+            
+            const textContent = document.createElement("div");
+            textContent.className = "image-text-content";
+            textContent.style.display = "none";
+            
+            textContainer.appendChild(textButton);
+            textContainer.appendChild(textContent);
+            fig.appendChild(textContainer);
+          }
+        })
+        .catch(() => {
+          // Text file doesn't exist, don't add text section
+        });
       
       grid.appendChild(fig);
     });
@@ -219,6 +231,43 @@ function handleHashChange() {
     }
   }
 }
+
+// Enhanced link opening experience
+function enhanceLinkOpening() {
+  // Add smooth transitions to images
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    img.style.transition = 'transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease';
+  });
+  
+  // Add subtle hover effects
+  document.querySelectorAll('.grid figure').forEach(figure => {
+    figure.style.transition = 'transform 0.3s ease';
+    
+    figure.addEventListener('mouseenter', () => {
+      figure.style.transform = 'translateY(-4px)';
+    });
+    
+    figure.addEventListener('mouseleave', () => {
+      figure.style.transform = 'translateY(0)';
+    });
+  });
+  
+  // Add loading states for better UX
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('load', () => {
+      img.style.opacity = '1';
+    });
+    
+    img.addEventListener('error', () => {
+      img.style.opacity = '0.5';
+      img.style.filter = 'grayscale(100%)';
+    });
+  });
+}
+
+// Call enhancement function after DOM is loaded
+document.addEventListener('DOMContentLoaded', enhanceLinkOpening);
 
 // New function to generate shareable URL for current image
 function generateShareableUrl() {
