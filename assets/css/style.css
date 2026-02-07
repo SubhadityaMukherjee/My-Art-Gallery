@@ -60,7 +60,11 @@ body {
 
 /* Header */
 .site-header {
-  background: var(--panel);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
   border-bottom: 1px solid var(--border);
   text-align: center;
   padding: 2rem 0;
@@ -73,12 +77,14 @@ body {
   font-size: 2.4rem;
   font-weight: 600;
   color: var(--fg);
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  margin-top: 0.4rem;
   color: var(--muted);
   font-size: 1rem;
+  opacity: 0.85;
+  margin-top: 0.3rem;
 }
 
 /* Navigation */
@@ -222,6 +228,9 @@ img {
   border-radius: 8px;
   background: #121214;
   transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+}
+img.loaded {
   opacity: 1;
 }
 

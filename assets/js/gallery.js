@@ -51,12 +51,15 @@ function render(data) {
       const el = document.createElement("img");
 
       el.src = `images/${cat.id}/${img.file}`;
+      
       el.alt = img.title || "";
       el.dataset.title = img.title || "";
       el.dataset.category = cat.id;
       el.dataset.filename = img.file;
+      el.dataset.id = `${cat.id}/${img.file}`;
 
       el.onclick = () => open(images.indexOf(el));
+      el.onload = () => el.classList.add("loaded");
 
       images.push(el);
       fig.appendChild(el);
@@ -122,7 +125,7 @@ const lbTitle = document.getElementById("lightbox-title");
 const lbShare = document.getElementById("lightbox-share");
 let currentIndex = 0;
 
-function open(index){
+function open(index) {
   currentIndex = index;
   const img = images[index];
   lbImg.src = img.src;
@@ -137,12 +140,12 @@ function open(index){
   document.body.classList.add("lightbox-open");
 }
 
-function close(){
+function close() {
   lightbox.hidden = true;
   document.body.classList.remove("lightbox-open");
-  // Clear hash on close
-  history.replaceState(null, "", location.pathname + location.search);
+  history.replaceState(null, "", location.pathname);
 }
+
 
 function next(){
   open((currentIndex + 1) % images.length);
@@ -158,29 +161,15 @@ function getCategoryFromImage(img) {
   return parent ? parent.id : "all";
 }
 
-function getImageIndexInCategory(img, catId) {
-  if (catId === "all") return currentIndex;
+function openFromHash() {
+  const params = new URLSearchParams(location.hash.slice(1));
+  const imgId = params.get("img");
+  if (!imgId) return;
 
-  const section = document.getElementById(catId);
-  if (!section) return 0;
-
-  const categoryImages = Array.from(section.querySelectorAll("img"));
-  return categoryImages.indexOf(img);
-}
-
-function getGlobalIndexFromCategory(catId, localIndex) {
-  if (catId === "all") return localIndex;
-
-  let globalIndex = 0;
-  const sections = document.querySelectorAll("section.category");
-  for (const s of sections) {
-    if (s.id === catId) {
-      const imgs = Array.from(s.querySelectorAll("img"));
-      if (localIndex < imgs.length) {
-        return globalIndex + localIndex;
-      }
-    } else {
-      globalIndex += s.querySelectorAll("img").length;
+  const tryOpen = () => {
+    if (!images.length) {
+      requestAnimationFrame(tryOpen);
+      return;
     }
   }
   return 0;
@@ -264,17 +253,32 @@ document.addEventListener('DOMContentLoaded', enhanceLinkOpening);
 // New function to generate shareable URL for current image
 function generateShareableUrl() {
   if (lightbox.hidden) return location.href;
-  
-  const img = images[currentIndex];
-  if (!img) return location.href;
 
-  const catId = getCategoryFromImage(img);
-  const imgIndex = getImageIndexInCategory(img, catId);
+  const img = images[currentIndex];
+  if (!img || !img.dataset.id) return location.href;
+
   const url = new URL(location.href);
-  url.hash = `category=${encodeURIComponent(catId)}&index=${imgIndex}`;
+  url.hash = `img=${encodeURIComponent(img.dataset.id)}`;
   return url.toString();
 }
 
+lbShare.onclick = async () => {
+  const shareUrl = generateShareableUrl();
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: lbTitle.textContent || "Artwork",
+        url: shareUrl
+      });
+    } catch (e) {
+      // user cancelled – ignore
+    }
+  } else {
+    await navigator.clipboard.writeText(shareUrl);
+    alert("Link copied to clipboard");
+  }
+};
 // Enhanced share button functionality
 lbShare.onclick = () => {
   const shareUrl = generateShareableUrl();
@@ -307,8 +311,9 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Handle initial hash on load
-window.addEventListener("load", handleHashChange);
-window.addEventListener("hashchange", handleHashChange);
+window.addEventListener("DOMContentLoaded", openFromHash);
+window.addEventListener("hashchange", openFromHash);
+
 
 // Function to load and toggle image text
 async function toggleImageText(container, button, categoryId, filename) {
