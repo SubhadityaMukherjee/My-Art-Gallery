@@ -375,7 +375,7 @@ figcaption {
   max-height: 70%;
   overflow-y: auto;
   padding: 1.5rem;
-  background: var(--panel);
+  background-color: black;
   border: 1px solid var(--border);
   border-radius: 12px;
   font-size: 1rem;
@@ -398,6 +398,26 @@ figcaption {
 .lb-story-content .error-text {
   color: #ff6b6b;
   font-weight: bold;
+}
+
+/* Close button in story content */
+.lb-story-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--fg);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.lb-story-close:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Image text sections */
