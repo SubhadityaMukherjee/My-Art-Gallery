@@ -148,6 +148,11 @@ const lbTitle = document.getElementById("lightbox-title");
 const lbShare = document.getElementById("lightbox-share");
 let currentIndex = 0;
 
+// Lightbox story elements
+let lbStoryButton = null;
+let lbStoryContent = null;
+let currentStoryShowing = false;
+
 function open(index) {
   currentIndex = index;
   const img = images[index];
@@ -161,6 +166,51 @@ function open(index) {
     meta.category
   )}&index=${meta.indexInCategory}`;
   history.replaceState(null, "", hash);
+
+  // Reset story state when opening new image
+  currentStoryShowing = false;
+
+  // Check if story button already exists, if so, just update it
+  const caption = document.querySelector("#lightbox .caption");
+  
+  // Remove existing story elements
+  const existingBtn = caption.querySelector(".lb-story-btn");
+  const existingContent = caption.querySelector(".lb-story-content");
+  if (existingBtn) existingBtn.remove();
+  if (existingContent) existingContent.remove();
+
+  // Add story button (check if txt file exists)
+  const textFileName = meta.file.replace(/\.[^/.]+$/, "") + ".txt";
+  const textFileUrl = `images/${meta.category}/${textFileName}`;
+
+  fetch(textFileUrl, { method: "HEAD" })
+    .then((response) => {
+      if (response.ok) {
+        lbStoryButton = document.createElement("button");
+        lbStoryButton.className = "lb-story-btn";
+        lbStoryButton.textContent = "Show Story";
+        lbStoryButton.onclick = () => toggleLightboxStory(meta.category, meta.file);
+
+        lbStoryContent = document.createElement("div");
+        lbStoryContent.className = "lb-story-content";
+        lbStoryContent.style.display = "none";
+        
+        // Click on story content to close it
+        lbStoryContent.onclick = (e) => {
+          e.stopPropagation();
+          lbStoryContent.style.display = "none";
+          lbStoryButton.textContent = "Show Story";
+          currentStoryShowing = false;
+        };
+
+        // Insert after share button
+        caption.insertBefore(lbStoryButton, lbShare.nextSibling);
+        caption.appendChild(lbStoryContent);
+      }
+    })
+    .catch(() => {
+      // No story file, do nothing
+    });
 
   lightbox.hidden = false;
   document.body.classList.add("lightbox-open");
@@ -383,3 +433,72 @@ mobileToggle.onclick = () => {
   nav.style.display = nav.style.display === "flex" ? "none" : "flex";
 };
 filterNav.parentElement.insertBefore(mobileToggle, filterNav);
+
+// Toggle story in lightbox view
+async function toggleLightboxStory(categoryId, filename) {
+  if (!lbStoryButton || !lbStoryContent) return;
+
+  if (lbStoryContent.style.display === "block") {
+    lbStoryContent.style.display = "none";
+    lbStoryButton.textContent = "Show Story";
+    currentStoryShowing = false;
+    return;
+  }
+
+  lbStoryButton.textContent = "Loading...";
+
+  try {
+    const textFileUrl = `images/${categoryId}/${filename.replace(
+      /\.[^/.]+$/,
+      ""
+    )}.txt`;
+    const response = await fetch(textFileUrl);
+
+    if (response.ok) {
+      const text = await response.text();
+      lbStoryContent.innerHTML = `
+        <button class="lb-story-close" title="Close">×</button>
+        <p>${text.trim()}</p>
+      `;
+      
+      // Add close handler to the X button
+      lbStoryContent.querySelector(".lb-story-close").onclick = (e) => {
+        e.stopPropagation();
+        lbStoryContent.style.display = "none";
+        lbStoryButton.textContent = "Show Story";
+        currentStoryShowing = false;
+      };
+      
+      lbStoryContent.style.display = "block";
+      lbStoryButton.textContent = "Hide Story";
+      currentStoryShowing = true;
+    } else {
+      lbStoryContent.innerHTML = `
+        <button class="lb-story-close" title="Close">×</button>
+        <p class="no-text">No Story available</p>
+      `;
+      lbStoryContent.style.display = "block";
+      lbStoryButton.textContent = "Hide Story";
+    }
+  } catch (error) {
+    console.error("Error loading story:", error);
+    lbStoryContent.innerHTML = `
+      <button class="lb-story-close" title="Close">×</button>
+      <p class="error-text">Error loading Story</p>
+    `;
+    lbStoryContent.style.display = "block";
+    lbStoryButton.textContent = "Hide Story";
+  }
+}
+
+// Make story content clickable to close
+document.addEventListener("click", (e) => {
+  if (!lbStoryContent || lbStoryContent.style.display !== "block") return;
+  
+  // Check if click is on or inside the story content
+  if (lbStoryContent.contains(e.target) && e.target !== lbStoryContent) {
+    lbStoryContent.style.display = "none";
+    if (lbStoryButton) lbStoryButton.textContent = "Show Story";
+    currentStoryShowing = false;
+  }
+});
