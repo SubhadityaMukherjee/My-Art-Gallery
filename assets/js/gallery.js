@@ -194,6 +194,14 @@ function open(index) {
         lbStoryContent = document.createElement("div");
         lbStoryContent.className = "lb-story-content";
         lbStoryContent.style.display = "none";
+        
+        // Click on story content to close it
+        lbStoryContent.onclick = (e) => {
+          e.stopPropagation();
+          lbStoryContent.style.display = "none";
+          lbStoryButton.textContent = "Show Story";
+          currentStoryShowing = false;
+        };
 
         // Insert after share button
         caption.insertBefore(lbStoryButton, lbShare.nextSibling);
@@ -448,19 +456,49 @@ async function toggleLightboxStory(categoryId, filename) {
 
     if (response.ok) {
       const text = await response.text();
-      lbStoryContent.innerHTML = `<p>${text.trim()}</p>`;
+      lbStoryContent.innerHTML = `
+        <button class="lb-story-close" title="Close">×</button>
+        <p>${text.trim()}</p>
+      `;
+      
+      // Add close handler to the X button
+      lbStoryContent.querySelector(".lb-story-close").onclick = (e) => {
+        e.stopPropagation();
+        lbStoryContent.style.display = "none";
+        lbStoryButton.textContent = "Show Story";
+        currentStoryShowing = false;
+      };
+      
       lbStoryContent.style.display = "block";
       lbStoryButton.textContent = "Hide Story";
       currentStoryShowing = true;
     } else {
-      lbStoryContent.innerHTML = `<p class="no-text">No Story available</p>`;
+      lbStoryContent.innerHTML = `
+        <button class="lb-story-close" title="Close">×</button>
+        <p class="no-text">No Story available</p>
+      `;
       lbStoryContent.style.display = "block";
       lbStoryButton.textContent = "Hide Story";
     }
   } catch (error) {
     console.error("Error loading story:", error);
-    lbStoryContent.innerHTML = `<p class="error-text">Error loading Story</p>`;
+    lbStoryContent.innerHTML = `
+      <button class="lb-story-close" title="Close">×</button>
+      <p class="error-text">Error loading Story</p>
+    `;
     lbStoryContent.style.display = "block";
     lbStoryButton.textContent = "Hide Story";
   }
 }
+
+// Make story content clickable to close
+document.addEventListener("click", (e) => {
+  if (!lbStoryContent || lbStoryContent.style.display !== "block") return;
+  
+  // Check if click is on or inside the story content
+  if (lbStoryContent.contains(e.target) && e.target !== lbStoryContent) {
+    lbStoryContent.style.display = "none";
+    if (lbStoryButton) lbStoryButton.textContent = "Show Story";
+    currentStoryShowing = false;
+  }
+});
