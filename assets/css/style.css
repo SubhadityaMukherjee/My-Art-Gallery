@@ -87,6 +87,14 @@ body {
   margin-top: 0.3rem;
 }
 
+/* Artwork count */
+.artwork-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
 /* Navigation */
 /* Base styles */
 .category-nav {
@@ -196,6 +204,19 @@ body {
   font-weight: 500;
   font-size: 1.4rem;
   color: var(--accent);
+}
+
+/* Subcategory styling */
+.category.subcategory {
+  margin-left: 30px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.category.subcategory h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #888;
 }
 
 /* Gallery */

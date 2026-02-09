@@ -35,6 +35,10 @@ function render(data) {
   data.categories.forEach((cat) => {
     renderCategory(cat, gallery);
   });
+
+  // Render artwork count after all images are loaded
+  const artworkCount = document.getElementById("artwork-count");
+  artworkCount.textContent = `(${images.length} artworks shown here)/(I have lost count)`;
 }
 
 function renderCategory(cat, container, isSubcategory = false) {
@@ -107,7 +111,6 @@ function renderCategory(cat, container, isSubcategory = false) {
       // Create container but only fetch text when requested
       const textContainer = document.createElement("div");
       textContainer.className = "image-text-container";
-      textContainer.style.display = "none";
 
       const textButton = document.createElement("button");
       textButton.className = "text-toggle-btn";
