@@ -17,18 +17,28 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Create story text files for new images
+        run: |
+          find images/ -type f \( -iname "*.webp" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read img; do
+            txt="${img%.*}.txt"
+            if [ ! -f "$txt" ]; then
+              echo "I have not added the story for this yet" > "$txt"
+              echo "Created $txt"
+            fi
+          done
+
       - name: Run generate_gallery script
         run: python scripts/generate_gallery.py
 
-      - name: Commit gallery.json if changed
+      - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/gallery.json
+          git add data/gallery.json images/**/*.txt
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update gallery.json [skip ci]"
+            git commit -m "Update gallery.json and add story files [skip ci]"
             git push
           fi
 
