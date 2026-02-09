@@ -5,55 +5,56 @@ const filterNav = document.getElementById("filter-nav");
 const images = [];
 
 // Flat metadata list aligned with `images`
-const imageMeta = []; // { category, file, title, indexInCategory }
+const imageMeta = []; // { category, file, title, indexInCategory, path }
+
+// Track all category IDs for filter functionality
+const allCategoryIds = new Set();
 
 fetch("data/gallery.json")
   .then(r => r.json())
   .then(data => render(data));
 
 function render(data) {
-  // Map categories for easy lookup
-  const categoryMap = {};
-  data.categories.forEach(c => (categoryMap[c.id] = c));
+  // Build filter order from categories
+  const filterOrder = ["all"];
+  
+  function collectCategoryIds(categories) {
+    categories.forEach(cat => {
+      filterOrder.push(cat.id);
+      allCategoryIds.add(cat.id);
+      if (cat.subcategories) {
+        collectCategoryIds(cat.subcategories);
+      }
+    });
+  }
+  collectCategoryIds(data.categories);
 
-  // Ordered categories
-  const orderedCategories = [
-    categoryMap["fanart"],
-    categoryMap["concept_art"],
-    categoryMap["character_design"],
-    categoryMap["animals"],
-    categoryMap["food"],
-    categoryMap["random"],
-  ].filter(Boolean);
-
-  // Render filter buttons (including "All")
-  const FILTER_ORDER = [
-    "all",
-    "fanart",
-    "concept_art",
-    "character_design",
-    "animals",
-    "food",
-    "random",
-  ];
-  FILTER_ORDER.forEach((catId) => {
+  // Render filter buttons
+  filterOrder.forEach((catId) => {
     const btn = document.createElement("button");
     btn.textContent =
-      catId === "all" ? "All" : catId.replace("_", " ").toUpperCase();
+      catId === "all" ? "All" : catId.replace(/_/g, " ").replace(/::/g, " / ").toUpperCase();
     btn.onclick = () => filter(catId);
     filterNav.appendChild(btn);
   });
 
-  // Build gallery and fill images + imageMeta
-  orderedCategories.forEach((cat) => {
-    const section = document.createElement("section");
-    section.id = cat.id;
-    section.className = "category";
+  // Build gallery recursively
+  data.categories.forEach((cat) => {
+    renderCategory(cat, gallery);
+  });
+}
 
-    const h2 = document.createElement("h2");
-    h2.textContent = cat.title.toUpperCase();
-    section.appendChild(h2);
+function renderCategory(cat, container) {
+  const section = document.createElement("section");
+  section.id = cat.id;
+  section.className = "category";
 
+  const h2 = document.createElement("h2");
+  h2.textContent = cat.title.toUpperCase();
+  section.appendChild(h2);
+
+  // Render images if present
+  if (cat.images && cat.images.length > 0) {
     const grid = document.createElement("div");
     grid.className = "grid";
 
@@ -64,7 +65,8 @@ function render(data) {
       const fig = document.createElement("figure");
       const el = document.createElement("img");
 
-      const src = `images/${cat.id}/${img.file}`;
+      const catPath = cat.id.replace(/::/g, "/");
+      const src = `images/${catPath}/${img.file}`;
       el.src = src;
       el.alt = img.title || "";
       el.dataset.title = img.title || "";
@@ -77,6 +79,7 @@ function render(data) {
         file: img.file,
         title: img.title || "",
         indexInCategory: idxInCat,
+        path: catPath,
       };
 
       const globalIndex = images.length;
@@ -88,7 +91,7 @@ function render(data) {
 
       // Optional story text
       const textFileName = img.file.replace(/\.[^/.]+$/, "") + ".txt";
-      const textFileUrl = `images/${cat.id}/${textFileName}`;
+      const textFileUrl = `images/${catPath}/${textFileName}`;
 
       fetch(textFileUrl, { method: "HEAD" })
         .then((response) => {
@@ -101,7 +104,7 @@ function render(data) {
             textButton.textContent = "Show Story";
             textButton.onclick = (e) => {
               e.stopPropagation();
-              toggleImageText(textContainer, textButton, cat.id, img.file);
+              toggleImageText(textContainer, textButton, catPath, img.file);
             };
 
             const textContent = document.createElement("div");
@@ -121,8 +124,16 @@ function render(data) {
     });
 
     section.appendChild(grid);
-    gallery.appendChild(section);
-  });
+  }
+
+  // Render subcategories recursively
+  if (cat.subcategories && cat.subcategories.length > 0) {
+    cat.subcategories.forEach((subcat) => {
+      renderCategory(subcat, section);
+    });
+  }
+
+  container.appendChild(section);
 }
 
 // Filter function
@@ -181,7 +192,8 @@ function open(index) {
 
   // Add story button (check if txt file exists)
   const textFileName = meta.file.replace(/\.[^/.]+$/, "") + ".txt";
-  const textFileUrl = `images/${meta.category}/${textFileName}`;
+  const catPath = meta.path || meta.category;
+  const textFileUrl = `images/${catPath}/${textFileName}`;
 
   fetch(textFileUrl, { method: "HEAD" })
     .then((response) => {
@@ -189,7 +201,7 @@ function open(index) {
         lbStoryButton = document.createElement("button");
         lbStoryButton.className = "lb-story-btn";
         lbStoryButton.textContent = "Show Story";
-        lbStoryButton.onclick = () => toggleLightboxStory(meta.category, meta.file);
+        lbStoryButton.onclick = () => toggleLightboxStory(catPath, meta.file);
 
         lbStoryContent = document.createElement("div");
         lbStoryContent.className = "lb-story-content";
