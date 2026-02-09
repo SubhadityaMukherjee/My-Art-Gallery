@@ -15,25 +15,18 @@ fetch("data/gallery.json")
   .then(data => render(data));
 
 function render(data) {
-  // Build filter order from categories
+  // Build filter order from TOP-LEVEL categories only (no subcategories in filters)
   const filterOrder = ["all"];
-  
-  function collectCategoryIds(categories) {
-    categories.forEach(cat => {
-      filterOrder.push(cat.id);
-      allCategoryIds.add(cat.id);
-      if (cat.subcategories) {
-        collectCategoryIds(cat.subcategories);
-      }
-    });
-  }
-  collectCategoryIds(data.categories);
+  data.categories.forEach(cat => {
+    filterOrder.push(cat.id);
+    allCategoryIds.add(cat.id);
+  });
 
   // Render filter buttons
   filterOrder.forEach((catId) => {
     const btn = document.createElement("button");
     btn.textContent =
-      catId === "all" ? "All" : catId.replace(/_/g, " ").replace(/::/g, " / ").toUpperCase();
+      catId === "all" ? "All" : catId.replace(/_/g, " ").toUpperCase();
     btn.onclick = () => filter(catId);
     filterNav.appendChild(btn);
   });
