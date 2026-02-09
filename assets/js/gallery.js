@@ -37,14 +37,24 @@ function render(data) {
   });
 }
 
-function renderCategory(cat, container) {
+function renderCategory(cat, container, isSubcategory = false) {
   const section = document.createElement("section");
   section.id = cat.id;
-  section.className = "category";
+  section.className = isSubcategory ? "category subcategory" : "category";
 
   const h2 = document.createElement("h2");
   h2.textContent = cat.title.toUpperCase();
+  if (isSubcategory) {
+    h2.style.fontSize = "1.2em";
+    h2.style.marginLeft = "20px";
+    h2.style.color = "#666";
+  }
   section.appendChild(h2);
+
+  // Add indentation for subcategory grids
+  if (isSubcategory) {
+    section.style.marginLeft = "20px";
+  }
 
   // Render images if present
   if (cat.images && cat.images.length > 0) {
@@ -122,7 +132,7 @@ function renderCategory(cat, container) {
   // Render subcategories recursively
   if (cat.subcategories && cat.subcategories.length > 0) {
     cat.subcategories.forEach((subcat) => {
-      renderCategory(subcat, section);
+      renderCategory(subcat, section, true);
     });
   }
 
