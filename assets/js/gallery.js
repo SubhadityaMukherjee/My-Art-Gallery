@@ -56,6 +56,13 @@ function renderCategory(cat, container, isSubcategory = false) {
     section.style.marginLeft = "20px";
   }
 
+  // Render subcategories FIRST (at the top if they exist)
+  if (cat.subcategories && cat.subcategories.length > 0) {
+    cat.subcategories.forEach((subcat) => {
+      renderCategory(subcat, section, true);
+    });
+  }
+
   // Render images if present
   if (cat.images && cat.images.length > 0) {
     const grid = document.createElement("div");
@@ -75,6 +82,7 @@ function renderCategory(cat, container, isSubcategory = false) {
       el.dataset.title = img.title || "";
       el.dataset.category = cat.id;
       el.dataset.filename = img.file;
+      el.loading = "lazy"; // Lazy load for performance
 
       // Store metadata aligned with `images` index
       const meta = {
@@ -92,48 +100,35 @@ function renderCategory(cat, container, isSubcategory = false) {
       imageMeta.push(meta);
       fig.appendChild(el);
 
-      // Optional story text
+      // Optional story text - defer loading until clicked
       const textFileName = img.file.replace(/\.[^/.]+$/, "") + ".txt";
       const textFileUrl = `images/${catPath}/${textFileName}`;
 
-      fetch(textFileUrl, { method: "HEAD" })
-        .then((response) => {
-          if (response.ok) {
-            const textContainer = document.createElement("div");
-            textContainer.className = "image-text-container";
+      // Create container but only fetch text when requested
+      const textContainer = document.createElement("div");
+      textContainer.className = "image-text-container";
+      textContainer.style.display = "none";
 
-            const textButton = document.createElement("button");
-            textButton.className = "text-toggle-btn";
-            textButton.textContent = "Show Story";
-            textButton.onclick = (e) => {
-              e.stopPropagation();
-              toggleImageText(textContainer, textButton, catPath, img.file);
-            };
+      const textButton = document.createElement("button");
+      textButton.className = "text-toggle-btn";
+      textButton.textContent = "Show Story";
+      textButton.onclick = (e) => {
+        e.stopPropagation();
+        toggleImageText(textContainer, textButton, catPath, img.file);
+      };
 
-            const textContent = document.createElement("div");
-            textContent.className = "image-text-content";
-            textContent.style.display = "none";
+      const textContent = document.createElement("div");
+      textContent.className = "image-text-content";
+      textContent.style.display = "none";
 
-            textContainer.appendChild(textButton);
-            textContainer.appendChild(textContent);
-            fig.appendChild(textContainer);
-          }
-        })
-        .catch(() => {
-          // Ignore if no text
-        });
+      textContainer.appendChild(textButton);
+      textContainer.appendChild(textContent);
+      fig.appendChild(textContainer);
 
       grid.appendChild(fig);
     });
 
     section.appendChild(grid);
-  }
-
-  // Render subcategories recursively
-  if (cat.subcategories && cat.subcategories.length > 0) {
-    cat.subcategories.forEach((subcat) => {
-      renderCategory(subcat, section, true);
-    });
   }
 
   container.appendChild(section);
