@@ -39,6 +39,10 @@ function render(data) {
   // Render artwork count after all images are loaded
   const artworkCount = document.getElementById("artwork-count");
   artworkCount.textContent = `(${images.length} artworks shown here)/(I have lost count)`;
+
+  // Mark gallery as loaded and process any pending hash
+  galleryLoaded = true;
+  processPendingHash();
 }
 
 function renderCategory(cat, container, isSubcategory = false) {
@@ -266,7 +270,7 @@ function getImageIndexInCategory(img, catId) {
   return categoryImages.indexOf(img);
 }
 
-// Map (category, localIndex) → global index
+// Map (category, localIndex) → global index using imageMeta for accurate matching
 function getGlobalIndexFromCategory(catId, localIndex) {
   if (catId === "all") return localIndex;
 
@@ -290,6 +294,10 @@ function getGlobalIndexFromCategory(catId, localIndex) {
   return 0;
 }
 
+// Track if gallery data has been loaded
+let galleryLoaded = false;
+let pendingHash = null;
+
 // Handle deep links like #category=fanart&index=3
 function handleHashChange() {
   const hash = location.hash;
@@ -301,29 +309,41 @@ function handleHashChange() {
 
   if (!catId || Number.isNaN(index)) return;
 
-  const waitForImages = () => {
-    if (images.length === 0) {
-      setTimeout(waitForImages, 100);
-      return;
-    }
+  // Store pending hash for processing after gallery loads
+  pendingHash = { catId, index };
 
-    const section = document.getElementById(catId);
-    if (!section) return;
+  if (!galleryLoaded) {
+    // Will be processed after gallery loads
+    return;
+  }
 
-    const isMobile = window.innerWidth <= 600;
-    const delay = isMobile ? 300 : 100;
+  processPendingHash();
+}
 
+function processPendingHash() {
+  if (!pendingHash) return;
+
+  const { catId, index } = pendingHash;
+  const section = document.getElementById(catId);
+  
+  if (!section) {
+    pendingHash = null;
+    return;
+  }
+
+  // Scroll to section first
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Open the image after a short delay to allow scroll to complete
+  const globalIdx = getGlobalIndexFromCategory(catId, index);
+  if (globalIdx >= 0 && globalIdx < images.length) {
     setTimeout(() => {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      const globalIdx = getGlobalIndexFromCategory(catId, index);
-      if (globalIdx >= 0 && globalIdx < images.length) {
-        open(globalIdx);
-      }
-    }, delay);
-  };
-
-  waitForImages();
+      open(globalIdx);
+      pendingHash = null;
+    }, 300);
+  } else {
+    pendingHash = null;
+  }
 }
 
 // Enhanced link opening experience
