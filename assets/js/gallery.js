@@ -264,19 +264,22 @@ function getGlobalIndexFromCategory(catId, localIndex) {
   if (catId === "all") return localIndex;
 
   let globalIndex = 0;
-  const sections = document.querySelectorAll("section.category");
-  for (const s of sections) {
+  // Find all sections (including subcategories) by looking for sections with id attribute
+  const allSections = document.querySelectorAll("section[id]");
+  console.log("Looking for category:", catId);
+  console.log("Available sections:", Array.from(allSections).map(s => s.id));
+  
+  for (const s of allSections) {
     const imgsInSection = s.querySelectorAll("img").length;
+    console.log("Checking section:", s.id, "has", imgsInSection, "images, globalIndex so far:", globalIndex);
     if (s.id === catId) {
-      if (localIndex < imgsInSection) {
-        return globalIndex + localIndex;
-      } else {
-        return globalIndex; // fallback
-      }
-    } else {
-      globalIndex += imgsInSection;
+      // Found the target section - add localIndex to accumulated globalIndex
+      console.log("Found! Returning globalIndex:", globalIndex + localIndex);
+      return globalIndex + localIndex;
     }
+    globalIndex += imgsInSection;
   }
+  console.log("Category not found, returning 0");
   return 0;
 }
 
