@@ -423,6 +423,7 @@ lbShare.onclick = () => {
 document.querySelector("#lightbox .next").onclick = next;
 document.querySelector("#lightbox .prev").onclick = prev;
 document.querySelector("#lightbox .overlay").onclick = close;
+document.querySelector("#lightbox .lightbox-close").onclick = close;
 
 document.addEventListener("keydown", (e) => {
   if (lightbox.hidden) return;
