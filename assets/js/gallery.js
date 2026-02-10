@@ -76,9 +76,7 @@ function renderCategory(cat, container, isSubcategory = false) {
     const grid = document.createElement("div");
     grid.className = "grid";
 
-    // Sort images descending by filename
-    cat.images.sort((a, b) => b.file.localeCompare(a.file));
-
+    // Images are already sorted by creation date (newest first) from the Python script
     cat.images.forEach((img, idxInCat) => {
       const fig = document.createElement("figure");
       const el = document.createElement("img");
@@ -543,5 +541,29 @@ document.addEventListener("click", (e) => {
     lbStoryContent.style.display = "none";
     if (lbStoryButton) lbStoryButton.textContent = "Show Story";
     currentStoryShowing = false;
+  }
+});
+
+// Scroll to top button functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollToTopBtn = document.getElementById("scroll-to-top");
+
+  if (scrollToTopBtn) {
+    function handleScroll() {
+      if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add("visible");
+      } else {
+        scrollToTopBtn.classList.remove("visible");
+      }
+    }
+
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Initial check
+    handleScroll();
   }
 });
