@@ -1,5 +1,8 @@
 import json
 from pathlib import Path
+from datetime import datetime
+from PIL import Image
+from PIL.ExifTags import TAGS
 
 IMAGES_DIR = Path("images")
 OUTPUT_FILE = Path("data/gallery.json")
@@ -18,6 +21,23 @@ def title_from_folder(folder: str) -> str:
     return folder.replace("_", " ").title()
 
 
+def get_exif_date_taken(file_path: Path) -> float:
+    """Extract EXIF DateTimeOriginal from image file, return timestamp or 0."""
+    try:
+        with Image.open(file_path) as img:
+            exif_data = img._getexif()
+            if exif_data:
+                for tag_id, value in exif_data.items():
+                    tag = TAGS.get(tag_id, tag_id)
+                    if tag == "DateTimeOriginal":
+                        # Format: "YYYY:MM:DD HH:MM:SS"
+                        dt = datetime.strptime(value, "%Y:%m:%d %H:%M:%S")
+                        return dt.timestamp()
+    except Exception:
+        pass
+    return 0
+
+
 def get_image_files(directory: Path) -> list[Path]:
     """Get all image files in a directory, sorted by creation time (newest first)."""
     image_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
@@ -27,7 +47,15 @@ def get_image_files(directory: Path) -> list[Path]:
         and not f.name.startswith(".")
         and f.suffix.lower() in image_extensions
     ]
-    images_files.sort(key=lambda f: f.stat().st_ctime, reverse=True)
+    
+    # Try to get EXIF date, fall back to file ctime
+    def get_sort_key(f: Path) -> float:
+        exif_date = get_exif_date_taken(f)
+        if exif_date > 0:
+            return exif_date
+        return f.stat().st_ctime
+    
+    images_files.sort(key=get_sort_key, reverse=True)
     return images_files
 
 
