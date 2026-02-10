@@ -273,13 +273,13 @@ figcaption {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(15, 15, 20, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
 }
+
 #lightbox .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.9);
   cursor: pointer;
   z-index: 1001;
 }
@@ -289,8 +289,8 @@ figcaption {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 92%;
-  max-height: 85%;
+  max-width: 100%;
+  max-height: calc(100vh - 100px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   object-fit: contain;
   z-index: 1002;
