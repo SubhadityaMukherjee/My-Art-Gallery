@@ -139,6 +139,13 @@ function renderCategory(cat, container, isSubcategory = false) {
 
 // Filter function
 function filter(id) {
+  // Auto-hide filter nav on mobile when selecting a category
+  if (window.innerWidth <= 600) {
+    const nav = document.querySelector(".category-nav");
+    nav.style.display = "none";
+    mobileToggle.textContent = "Filter Categories ▼";
+  }
+  
   if (id === "all") {
     document
       .querySelectorAll(".category")
