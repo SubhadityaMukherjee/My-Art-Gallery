@@ -566,3 +566,9 @@ main.container {
   }
 }
 
+/* Share story button in gallery */
+.share-story-btn {
+  padding: 0.4rem 0.8rem;
+  margin-left: 0.5rem;
+}
+

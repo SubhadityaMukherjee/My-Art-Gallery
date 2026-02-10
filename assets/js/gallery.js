@@ -122,11 +122,27 @@ function renderCategory(cat, container, isSubcategory = false) {
         toggleImageText(textContainer, textButton, catPath, img.file);
       };
 
+      // Share story button
+      const shareButton = document.createElement("button");
+      shareButton.className = "share-btn share-story-btn";
+      shareButton.textContent = "Share";
+      shareButton.title = "Copy story link to clipboard";
+      shareButton.onclick = async (e) => {
+        e.stopPropagation();
+        const shareUrl = new URL(location.href);
+        shareUrl.hash = `#category=${encodeURIComponent(cat.id)}&index=${idxInCat}`;
+        navigator.clipboard.writeText(shareUrl.toString()).then(() => {
+          shareButton.textContent = "Copied!";
+          setTimeout(() => { shareButton.textContent = "Share"; }, 2000);
+        });
+      };
+
       const textContent = document.createElement("div");
       textContent.className = "image-text-content";
       textContent.style.display = "none";
 
       textContainer.appendChild(textButton);
+      textContainer.appendChild(shareButton);
       textContainer.appendChild(textContent);
       fig.appendChild(textContainer);
 
