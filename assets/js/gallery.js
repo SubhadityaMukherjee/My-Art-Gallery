@@ -284,27 +284,17 @@ function getImageIndexInCategory(img, catId) {
   return categoryImages.indexOf(img);
 }
 
-// Map (category, localIndex) → global index using imageMeta for accurate matching
+// Map (category, localIndex) → global index using imageMeta
 function getGlobalIndexFromCategory(catId, localIndex) {
   if (catId === "all") return localIndex;
 
-  let globalIndex = 0;
-  // Find all sections (including subcategories) by looking for sections with id attribute
-  const allSections = document.querySelectorAll("section[id]");
-  console.log("Looking for category:", catId);
-  console.log("Available sections:", Array.from(allSections).map(s => s.id));
-  
-  for (const s of allSections) {
-    const imgsInSection = s.querySelectorAll("img").length;
-    console.log("Checking section:", s.id, "has", imgsInSection, "images, globalIndex so far:", globalIndex);
-    if (s.id === catId) {
-      // Found the target section - add localIndex to accumulated globalIndex
-      console.log("Found! Returning globalIndex:", globalIndex + localIndex);
-      return globalIndex + localIndex;
+  // Find the first image in this category to get the starting global index
+  for (let i = 0; i < imageMeta.length; i++) {
+    if (imageMeta[i].category === catId) {
+      // Found the category - add local index to get global index
+      return i + localIndex;
     }
-    globalIndex += imgsInSection;
   }
-  console.log("Category not found, returning 0");
   return 0;
 }
 
@@ -402,7 +392,7 @@ function generateShareableUrl() {
   if (!meta) return location.href;
 
   const url = new URL(location.href);
-  url.hash = `category=${encodeURIComponent(
+  url.hash = `#category=${encodeURIComponent(
     meta.category
   )}&index=${meta.indexInCategory}`;
   return url.toString();
