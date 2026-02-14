@@ -23,7 +23,7 @@ jobs:
         run: python -m pip install --upgrade pip
 
       - name: Install project dependencies from pyproject.toml
-        run: pip install .
+        run: pip install pillow
 
       - name: Create story text files for new images
         run: |
