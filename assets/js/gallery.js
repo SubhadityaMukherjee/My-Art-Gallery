@@ -574,33 +574,3 @@ document.addEventListener("DOMContentLoaded", () => {
     handleScroll();
   }
 });
-
-// Swipe functionality for lightbox
-let touchStartX = 0;
-let touchEndX = 0;
-const minSwipeDistance = 50;
-
-lightbox.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-
-lightbox.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-}, { passive: true });
-
-function handleSwipe() {
-  if (lightbox.hidden) return;
-  
-  const swipeDistance = touchEndX - touchStartX;
-  
-  if (Math.abs(swipeDistance) > minSwipeDistance) {
-    if (swipeDistance > 0) {
-      // Swipe right - go to previous image
-      prev();
-    } else {
-      // Swipe left - go to next image
-      next();
-    }
-  }
-}
