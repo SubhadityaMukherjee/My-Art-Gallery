@@ -5,56 +5,56 @@
       "title": "Fanart",
       "images": [
         {
-          "file": "genshin zhongli.webp",
-          "title": "Genshin Zhongli"
-        },
-        {
-          "file": "Black myth wukong and elden ring fanart.webp",
-          "title": "Black Myth Wukong And Elden Ring Fanart"
+          "file": "niffler.webp",
+          "title": "Niffler"
         },
         {
           "file": "finch fanart for my engagement.webp",
           "title": "Finch Fanart For My Engagement"
         },
         {
+          "file": "genshin zhongli.webp",
+          "title": "Genshin Zhongli"
+        },
+        {
           "file": "lily from modern family.webp",
           "title": "Lily From Modern Family"
-        },
-        {
-          "file": "niffler.webp",
-          "title": "Niffler"
-        },
-        {
-          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
-          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
         },
         {
           "file": "Sekiro fanart.webp",
           "title": "Sekiro Fanart"
         },
         {
+          "file": "Percy jackson chosen.webp",
+          "title": "Percy Jackson Chosen"
+        },
+        {
           "file": "Mahabharata fanart.webp",
           "title": "Mahabharata Fanart"
         },
         {
-          "file": "Black myth wukong fanart.webp",
-          "title": "Black Myth Wukong Fanart"
+          "file": "Black myth wukong and elden ring fanart.webp",
+          "title": "Black Myth Wukong And Elden Ring Fanart"
         },
         {
           "file": "Elden ring + harry potter.webp",
           "title": "Elden Ring + Harry Potter"
         },
         {
-          "file": "Percy jackson chosen.webp",
-          "title": "Percy Jackson Chosen"
+          "file": "Baby_Yoda_.webp",
+          "title": "Baby Yoda"
+        },
+        {
+          "file": "Black myth wukong fanart.webp",
+          "title": "Black Myth Wukong Fanart"
+        },
+        {
+          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
+          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
         },
         {
           "file": "Assasins creed Egpyt.webp",
           "title": "Assasins Creed Egpyt"
-        },
-        {
-          "file": "Baby_Yoda_.webp",
-          "title": "Baby Yoda"
         }
       ],
       "subcategories": [
@@ -83,8 +83,12 @@
       "title": "Concept Art",
       "images": [
         {
-          "file": "Life_Is_Transient.jpg",
-          "title": "Life Is Transient"
+          "file": "dragon_cafe_doodle.webp",
+          "title": "Dragon Cafe Doodle"
+        },
+        {
+          "file": "boat_people.webp",
+          "title": "Boat People"
         },
         {
           "file": "Ugh_That's_A_Huge_Bug.jpg",
@@ -93,6 +97,10 @@
         {
           "file": "The_Botherlands Concept map.webp",
           "title": "The Botherlands Concept Map"
+        },
+        {
+          "file": "Life_Is_Transient.jpg",
+          "title": "Life Is Transient"
         },
         {
           "file": "Entry to Narnia.webp",
@@ -105,14 +113,6 @@
         {
           "file": "A girl in a cacti garden.webp",
           "title": "A Girl In A Cacti Garden"
-        },
-        {
-          "file": "boat_people.webp",
-          "title": "Boat People"
-        },
-        {
-          "file": "dragon_cafe_doodle.webp",
-          "title": "Dragon Cafe Doodle"
         }
       ]
     },
@@ -120,18 +120,6 @@
       "id": "character_design",
       "title": "Character Design",
       "images": [
-        {
-          "file": "Girl with her tiny animal friends.webp",
-          "title": "Girl With Her Tiny Animal Friends"
-        },
-        {
-          "file": "Floaty cathedral lady.webp",
-          "title": "Floaty Cathedral Lady"
-        },
-        {
-          "file": "My grandmother.webp",
-          "title": "My Grandmother"
-        },
         {
           "file": "valentines Day flowers.webp",
           "title": "Valentines Day Flowers"
@@ -145,6 +133,26 @@
           "title": "Treegrandpa"
         },
         {
+          "file": "My grandmother.webp",
+          "title": "My Grandmother"
+        },
+        {
+          "file": "Mini_Characters.jpg",
+          "title": "Mini Characters"
+        },
+        {
+          "file": "Girl with her tiny animal friends.webp",
+          "title": "Girl With Her Tiny Animal Friends"
+        },
+        {
+          "file": "Floaty cathedral lady.webp",
+          "title": "Floaty Cathedral Lady"
+        },
+        {
+          "file": "Essence_Eater.jpg",
+          "title": "Essence Eater"
+        },
+        {
           "file": "Character_Practice.webp",
           "title": "Character Practice"
         }
@@ -155,44 +163,44 @@
       "title": "Animals",
       "images": [
         {
-          "file": "Ducky with a flower on her head.webp",
-          "title": "Ducky With A Flower On Her Head"
-        },
-        {
-          "file": "Magic kitty.webp",
-          "title": "Magic Kitty"
-        },
-        {
-          "file": "Cat and dog.webp",
-          "title": "Cat And Dog"
-        },
-        {
-          "file": "Valentines day mice.webp",
-          "title": "Valentines Day Mice"
-        },
-        {
-          "file": "Detective Feather.webp",
-          "title": "Detective Feather"
-        },
-        {
-          "file": "Golden retriever puppy with our peace lily.webp",
-          "title": "Golden Retriever Puppy With Our Peace Lily"
+          "file": "penguin.webp",
+          "title": "Penguin"
         },
         {
           "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
           "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
         },
         {
+          "file": "Valentines day mice.webp",
+          "title": "Valentines Day Mice"
+        },
+        {
           "file": "owl.webp",
           "title": "Owl"
         },
         {
-          "file": "penguin.webp",
-          "title": "Penguin"
+          "file": "Magic kitty.webp",
+          "title": "Magic Kitty"
+        },
+        {
+          "file": "Ducky with a flower on her head.webp",
+          "title": "Ducky With A Flower On Her Head"
+        },
+        {
+          "file": "Golden retriever puppy with our peace lily.webp",
+          "title": "Golden Retriever Puppy With Our Peace Lily"
+        },
+        {
+          "file": "Cat and dog.webp",
+          "title": "Cat And Dog"
         },
         {
           "file": "Christmas_Card_25.webp",
           "title": "Christmas Card 25"
+        },
+        {
+          "file": "Detective Feather.webp",
+          "title": "Detective Feather"
         }
       ]
     },
@@ -201,20 +209,20 @@
       "title": "Food",
       "images": [
         {
-          "file": "Dim sum.jpeg",
-          "title": "Dim Sum"
-        },
-        {
           "file": "ramen 1.webp",
           "title": "Ramen 1"
+        },
+        {
+          "file": "mumbday25.webp",
+          "title": "Mumbday25"
         },
         {
           "file": "oranges.webp",
           "title": "Oranges"
         },
         {
-          "file": "mumbday25.webp",
-          "title": "Mumbday25"
+          "file": "Dim sum.jpeg",
+          "title": "Dim Sum"
         },
         {
           "file": "Shrimp ramen.webp",
