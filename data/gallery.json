@@ -9,6 +9,10 @@
           "title": "Soda Pop"
         },
         {
+          "file": "finch fanart for my engagement.webp",
+          "title": "Finch Fanart For My Engagement"
+        },
+        {
           "file": "niffler.webp",
           "title": "Niffler"
         },
@@ -17,20 +21,12 @@
           "title": "Lily From Modern Family"
         },
         {
-          "file": "finch fanart for my engagement.webp",
-          "title": "Finch Fanart For My Engagement"
-        },
-        {
           "file": "genshin zhongli.webp",
           "title": "Genshin Zhongli"
         },
         {
           "file": "Sekiro fanart.webp",
           "title": "Sekiro Fanart"
-        },
-        {
-          "file": "Elden ring + harry potter.webp",
-          "title": "Elden Ring + Harry Potter"
         },
         {
           "file": "Percy jackson chosen.webp",
@@ -45,12 +41,12 @@
           "title": "Assasins Creed Egpyt"
         },
         {
-          "file": "Baby_Yoda_.webp",
-          "title": "Baby Yoda"
+          "file": "Elden ring + harry potter.webp",
+          "title": "Elden Ring + Harry Potter"
         },
         {
-          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
-          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
+          "file": "Baby_Yoda_.webp",
+          "title": "Baby Yoda"
         },
         {
           "file": "Black myth wukong fanart.webp",
@@ -59,6 +55,10 @@
         {
           "file": "Black myth wukong and elden ring fanart.webp",
           "title": "Black Myth Wukong And Elden Ring Fanart"
+        },
+        {
+          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
+          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
         }
       ],
       "subcategories": [
@@ -107,6 +107,10 @@
           "title": "The Botherlands Concept Map"
         },
         {
+          "file": "Pokopia.jpg",
+          "title": "Pokopia"
+        },
+        {
           "file": "Life_Is_Transient.jpg",
           "title": "Life Is Transient"
         },
@@ -137,6 +141,10 @@
           "title": "Valentines Day Flowers"
         },
         {
+          "file": "Mini_Characters.jpg",
+          "title": "Mini Characters"
+        },
+        {
           "file": "Muscle man.webp",
           "title": "Muscle Man"
         },
@@ -147,10 +155,6 @@
         {
           "file": "treegrandpa.webp",
           "title": "Treegrandpa"
-        },
-        {
-          "file": "Mini_Characters.jpg",
-          "title": "Mini Characters"
         },
         {
           "file": "Floaty cathedral lady.webp",
@@ -175,24 +179,16 @@
       "title": "Animals",
       "images": [
         {
-          "file": "penguin.webp",
-          "title": "Penguin"
-        },
-        {
           "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
           "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
         },
         {
-          "file": "Valentines day mice.webp",
-          "title": "Valentines Day Mice"
+          "file": "penguin.webp",
+          "title": "Penguin"
         },
         {
           "file": "owl.webp",
           "title": "Owl"
-        },
-        {
-          "file": "Detective Feather.webp",
-          "title": "Detective Feather"
         },
         {
           "file": "Ducky with a flower on her head.webp",
@@ -203,12 +199,20 @@
           "title": "Golden Retriever Puppy With Our Peace Lily"
         },
         {
-          "file": "Cat and dog.webp",
-          "title": "Cat And Dog"
+          "file": "Valentines day mice.webp",
+          "title": "Valentines Day Mice"
         },
         {
           "file": "Magic kitty.webp",
           "title": "Magic Kitty"
+        },
+        {
+          "file": "Detective Feather.webp",
+          "title": "Detective Feather"
+        },
+        {
+          "file": "Cat and dog.webp",
+          "title": "Cat And Dog"
         },
         {
           "file": "Christmas_Card_25.webp",
@@ -229,16 +233,16 @@
           "title": "Ramen 1"
         },
         {
+          "file": "mumbday25.webp",
+          "title": "Mumbday25"
+        },
+        {
           "file": "Shrimp ramen.webp",
           "title": "Shrimp Ramen"
         },
         {
           "file": "Dim sum.jpeg",
           "title": "Dim Sum"
-        },
-        {
-          "file": "mumbday25.webp",
-          "title": "Mumbday25"
         }
       ]
     },
