@@ -7,6 +7,9 @@
   <meta name="description" content="Illustration and concept art by Subhaditya Mukherjee. Hand-drawn digital and traditional artwork." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
 
   <meta property="og:title" content="Subhaditya Mukherjee – Art Portfolio" />
   <meta property="og:description" content="Illustration and concept art. Hand-drawn digital and traditional artwork." />
@@ -34,56 +37,76 @@
 
 <header class="site-header">
   <div class="container">
-    <h1>Subhaditya Mukherjee</h1>
-<p class="subtitle">Illustration and concept art</p>
-
-<div class="links">
-  <a href="mailto:msubhaditya@gmail.com">Contact me :)</a>
-  <span>•</span>
-  <!-- <a href="https://subhadityamukherjee.github.io/Knowledge-base/" target="_blank">Website</a> -->
-  <!-- <span>•</span> -->
-  <a href="https://www.instagram.com/subhadoesarts" target="_blank">Instagram</a>
-</div>
+    <p class="kicker">Illustration · Concept Art</p>
+    <h1 class="artist-name">Subhaditya Mukherjee</h1>
+    <nav class="site-nav" aria-label="Site">
+      <a href="mailto:msubhaditya@gmail.com">Contact</a>
+      <a href="https://www.instagram.com/subhadoesarts" target="_blank" rel="noopener">Instagram</a>
+      <a href="#about">About</a>
+    </nav>
   </div>
 </header>
 
 <main class="container">
-  <section class="about">
-    <h2>Hi!</h2>
-    <p>It's really nice to meet you :) Thank you for stopping by. This page showcases my digital and traditional artwork. All pieces are hand-drawn (even the digital ones) - there’s no AI-generated art here.</p>
 
-    <details>
-      <summary>Mediums I Use</summary>
-      <ul>
-        <li><strong>Digital:</strong> Procreate/CSP/Heavy Paint on iPad</li>
-        <li><strong>Traditional:</strong> Watercolor, Brush and ball point pens, Gouache (Winsor & Newton / Himi gouache)</li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>Commissions</summary>
-      <p>Interested in commissioning a piece? Send me an email. Availability depends on my schedule.</p>
-    </details>
-
-    <details>
-      <summary>Legal Notice</summary>
-      <p>All artwork displayed here is my original work. Unauthorized reproduction or sale will result in legal action.</p>
-    </details>
-
+  <!-- 01 · Selected Work -->
+  <section id="featured" class="featured-section">
+    <div class="section-head">
+      <span class="section-num" aria-hidden="true">01</span>
+      <h2>Selected Work</h2>
+    </div>
+    <div class="featured-grid"></div>
   </section>
 
-  <!-- Search -->
-  <div class="search-box">
-    <input id="search" type="search" placeholder="Search artworks, categories, stories…" autocomplete="off" />
-  </div>
+  <!-- 02 · All Work -->
+  <section class="works-section">
+    <div class="section-head">
+      <span class="section-num" aria-hidden="true">02</span>
+      <h2>All Work</h2>
+    </div>
 
-  <!-- Category filter buttons -->
-  <nav id="filter-nav" class="category-nav"></nav>
-  <div id="artwork-count" class="artwork-count"></div>
+    <div class="gallery-tools">
+      <nav id="filter-nav" class="category-nav" aria-label="Categories"></nav>
+      <input id="search" type="search" placeholder="Search" autocomplete="off" aria-label="Search artworks" />
+    </div>
+    <div id="artwork-count" class="artwork-count"></div>
 
-  <!-- Gallery -->
-  <section id="gallery"></section>
+    <section id="gallery"></section>
+  </section>
+
+  <!-- 03 · About -->
+  <section id="about" class="about-section">
+    <div class="section-head">
+      <span class="section-num" aria-hidden="true">03</span>
+      <h2>About</h2>
+    </div>
+
+    <p class="about-intro">It's really nice to meet you :) Thank you for stopping by. This page showcases my digital and traditional artwork. All pieces are hand-drawn (even the digital ones) — there's no AI-generated art here.</p>
+
+    <div class="about-cols">
+      <div>
+        <h3>Mediums</h3>
+        <p><strong>Digital:</strong> Procreate / CSP / Heavy Paint on iPad</p>
+        <p><strong>Traditional:</strong> Watercolour, brush and ball-point pens, gouache (Winsor &amp; Newton / Himi)</p>
+      </div>
+      <div>
+        <h3>Commissions</h3>
+        <p>Interested in commissioning a piece? <a href="mailto:msubhaditya@gmail.com">Send me an email</a> — availability depends on my schedule.</p>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <p>All artwork displayed here is my original work. Unauthorized reproduction or sale will result in legal action.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Subhaditya Mukherjee · Hand-drawn, always.</p>
+  </div>
+</footer>
 
 <!-- Lightbox -->
 <div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Artwork viewer">
@@ -105,8 +128,10 @@
 
 <!-- Scroll to top button -->
 <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"></polyline>
   </svg>
 </button>
 
+</body>
+</html>

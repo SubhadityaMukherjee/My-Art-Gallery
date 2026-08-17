@@ -75,16 +75,14 @@ function updateArtworkCount(visibleCount) {
 }
 
 function renderFeatured(featured) {
-  const section = document.createElement("section");
-  section.id = "featured";
-  section.className = "featured-section";
+  const section = document.getElementById("featured");
+  const grid = section?.querySelector(".featured-grid");
+  if (!grid) return;
 
-  const h2 = document.createElement("h2");
-  h2.textContent = "FEATURED";
-  section.appendChild(h2);
-
-  const strip = document.createElement("div");
-  strip.className = "featured-strip";
+  if (!featured.length) {
+    section.remove();
+    return;
+  }
 
   featured.forEach((item, i) => {
     const catPath = item.category.replace(/::/g, "/");
@@ -94,7 +92,6 @@ function renderFeatured(featured) {
     if (globalIndex === -1) return;
 
     const fig = document.createElement("figure");
-    fig.className = "featured-item";
 
     const el = document.createElement("img");
     el.src = thumbUrl(catPath, item.file);
@@ -110,14 +107,13 @@ function renderFeatured(featured) {
     fig.appendChild(el);
 
     const caption = document.createElement("figcaption");
-    caption.textContent = item.title || "";
+    caption.textContent = item.year
+      ? `${item.title} · ${item.year}`
+      : item.title;
     fig.appendChild(caption);
 
-    strip.appendChild(fig);
+    grid.appendChild(fig);
   });
-
-  section.appendChild(strip);
-  gallery.parentElement.insertBefore(section, gallery);
 }
 
 function renderCategory(cat, container, isSubcategory = false) {
@@ -126,18 +122,8 @@ function renderCategory(cat, container, isSubcategory = false) {
   section.className = isSubcategory ? "category subcategory" : "category";
 
   const h2 = document.createElement("h2");
-  h2.textContent = cat.title.toUpperCase();
-  if (isSubcategory) {
-    h2.style.fontSize = "1.2em";
-    h2.style.marginLeft = "20px";
-    h2.style.color = "#666";
-  }
+  h2.textContent = cat.title;
   section.appendChild(h2);
-
-  // Add indentation for subcategory grids
-  if (isSubcategory) {
-    section.style.marginLeft = "20px";
-  }
 
   // Render subcategories FIRST (at the top if they exist)
   if (cat.subcategories && cat.subcategories.length > 0) {
@@ -198,42 +184,6 @@ function renderCategory(cat, container, isSubcategory = false) {
       caption.textContent = meta.year ? `${meta.title} · ${meta.year}` : meta.title;
       fig.appendChild(caption);
 
-      // Story controls (only when a real story exists)
-      if (meta.story) {
-        const textContainer = document.createElement("div");
-        textContainer.className = "image-text-container";
-
-        const textButton = document.createElement("button");
-        textButton.className = "text-toggle-btn";
-        textButton.textContent = "Show Story";
-        textButton.onclick = (e) => {
-          e.stopPropagation();
-          toggleImageText(textContainer, textButton, meta.story);
-        };
-
-        const shareButton = document.createElement("button");
-        shareButton.className = "share-btn share-story-btn";
-        shareButton.textContent = "Share";
-        shareButton.title = "Copy story link to clipboard";
-        shareButton.onclick = async (e) => {
-          e.stopPropagation();
-          const shareUrl = new URL(location.href);
-          shareUrl.hash = `#category=${encodeURIComponent(cat.id)}&index=${idxInCat}`;
-          navigator.clipboard.writeText(shareUrl.toString()).then(() => {
-            showToast("Link copied!");
-          });
-        };
-
-        const textContent = document.createElement("div");
-        textContent.className = "image-text-content";
-        textContent.style.display = "none";
-
-        textContainer.appendChild(textButton);
-        textContainer.appendChild(shareButton);
-        textContainer.appendChild(textContent);
-        fig.appendChild(textContainer);
-      }
-
       grid.appendChild(fig);
     });
 
@@ -249,13 +199,6 @@ function filter(id) {
   filterNav.querySelectorAll("button").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.catId === id);
   });
-
-  // Auto-hide filter nav on mobile when selecting a category
-  if (window.innerWidth <= 600) {
-    const nav = document.querySelector(".category-nav");
-    nav.style.display = "none";
-    mobileToggle.textContent = "Filter Categories ▼";
-  }
 
   if (id === "all") {
     document
@@ -350,7 +293,7 @@ function open(index) {
   if (meta.story) {
     lbStoryButton = document.createElement("button");
     lbStoryButton.className = "lb-story-btn";
-    lbStoryButton.textContent = "Show Story";
+    lbStoryButton.textContent = "Story";
     lbStoryButton.onclick = () => toggleLightboxStory(meta.story);
 
     lbStoryContent = document.createElement("div");
@@ -500,41 +443,13 @@ document.addEventListener("keydown", (e) => {
 // Handle initial hash on load
 window.addEventListener("load", handleHashChange);
 window.addEventListener("hashchange", handleHashChange);
-
-// Show/toggle the story text (baked into gallery.json)
-function toggleImageText(container, button, story) {
-  const textContent = container.querySelector(".image-text-content");
-
-  if (textContent.style.display === "block") {
-    textContent.style.display = "none";
-    button.textContent = "Show Story";
-    return;
-  }
-
-  const p = document.createElement("p");
-  p.textContent = story.trim();
-  textContent.replaceChildren(p);
-  textContent.style.display = "block";
-  button.textContent = "Hide Story";
-}
-
-// Mobile filter toggle
-const mobileToggle = document.createElement("button");
-mobileToggle.className = "mobile-filter-toggle";
-mobileToggle.textContent = "Filter Categories ▼";
-mobileToggle.onclick = () => {
-  const nav = document.querySelector(".category-nav");
-  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-};
-filterNav.parentElement.insertBefore(mobileToggle, filterNav);
-
 // Toggle story in lightbox view
 function toggleLightboxStory(story) {
   if (!lbStoryButton || !lbStoryContent) return;
 
   if (lbStoryContent.style.display === "block") {
     lbStoryContent.style.display = "none";
-    lbStoryButton.textContent = "Show Story";
+    lbStoryButton.textContent = "Story";
     currentStoryShowing = false;
     return;
   }
@@ -546,7 +461,7 @@ function toggleLightboxStory(story) {
   closeBtn.onclick = (e) => {
     e.stopPropagation();
     lbStoryContent.style.display = "none";
-    lbStoryButton.textContent = "Show Story";
+    lbStoryButton.textContent = "Story";
     currentStoryShowing = false;
   };
 
@@ -555,7 +470,7 @@ function toggleLightboxStory(story) {
 
   lbStoryContent.replaceChildren(closeBtn, p);
   lbStoryContent.style.display = "block";
-  lbStoryButton.textContent = "Hide Story";
+  lbStoryButton.textContent = "Close";
   currentStoryShowing = true;
 }
 
@@ -566,7 +481,7 @@ document.addEventListener("click", (e) => {
   // Check if click is on or inside the story content
   if (lbStoryContent.contains(e.target) && e.target !== lbStoryContent) {
     lbStoryContent.style.display = "none";
-    if (lbStoryButton) lbStoryButton.textContent = "Show Story";
+    if (lbStoryButton) lbStoryButton.textContent = "Story";
     currentStoryShowing = false;
   }
 });
