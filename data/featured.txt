@@ -1,0 +1,19 @@
+# Featured strip - shown at the top of the gallery, before the categories.
+#
+# How to use:
+#   - One artwork per line: the path relative to the images/ folder.
+#   - The order of the lines IS the display order (top line = first).
+#   - Delete a line to remove it from the strip; add a line to add one.
+#   - Lines starting with # are comments and are ignored.
+#   - Invalid paths are skipped with a warning when gallery.json regenerates.
+#
+# Example:
+#   concept_art/lotus.webp
+#   fanart/Pokemon/PikaPi.webp
+
+concept_art/lotus.webp
+concept_art/Water diety.webp
+concept_art/City_Dragons.webp
+concept_art/Eclipse.webp
+concept_art/Character_Practice.webp
+fanart/Pokemon/PikaPi.webp

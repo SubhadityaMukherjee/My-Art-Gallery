@@ -6,7 +6,8 @@ from PIL.ExifTags import TAGS
 
 IMAGES_DIR = Path("images")
 OUTPUT_FILE = Path("data/gallery.json")
-FEATURED_FILE = Path("data/featured.json")
+FEATURED_FILE = Path("data/featured.txt")
+THUMBS_DIR_NAME = "thumbs"
 
 # Order for top-level categories (can be customized)
 CATEGORY_ORDER = ["fanart", "concept_art", "character_design", "animals", "food", "random"]
@@ -173,14 +174,18 @@ def iter_images(categories: list):
         yield from iter_images(cat.get("subcategories", []))
 
 
-def build_featured(gallery: dict) -> list:
-    """Resolve featured.json paths (relative to images/) into gallery entries."""
+def load_featured_paths() -> list:
+    """Read data/featured.txt: one image path per line, # lines are comments."""
     if not FEATURED_FILE.exists():
         return []
-    try:
-        featured_paths = json.loads(FEATURED_FILE.read_text(encoding="utf-8"))
-    except Exception as e:
-        print(f"! could not read {FEATURED_FILE}: {e}")
+    lines = FEATURED_FILE.read_text(encoding="utf-8").splitlines()
+    return [ln.strip() for ln in lines if ln.strip() and not ln.strip().startswith("#")]
+
+
+def build_featured(gallery: dict) -> list:
+    """Resolve featured.txt paths (relative to images/) into gallery entries."""
+    featured_paths = load_featured_paths()
+    if not featured_paths:
         return []
 
     by_path = {
@@ -204,9 +209,9 @@ def build_featured(gallery: dict) -> list:
 # Build the gallery structure recursively
 gallery = {"featured": [], "categories": []}
 
-# Process top-level directories
+# Process top-level directories (skip the generated thumbs/ tree)
 for item in sorted(IMAGES_DIR.iterdir()):
-    if item.is_dir():
+    if item.is_dir() and item.name != THUMBS_DIR_NAME:
         category = build_category_structure(item)
         if category:
             gallery["categories"].append(category)

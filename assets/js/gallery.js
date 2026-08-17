@@ -15,6 +15,10 @@ const figures = [];
 // Track all category IDs for filter functionality
 const allCategoryIds = new Set();
 
+// Grid uses ~700px thumbnails (mirrored under images/thumbs/); lightbox uses full size
+const thumbUrl = (catPath, file) => `images/thumbs/${catPath}/${file}`;
+const fullUrl = (catPath, file) => `images/${catPath}/${file}`;
+
 let galleryLoaded = false;
 let pendingHash = null;
 
@@ -37,11 +41,13 @@ function render(data) {
     allCategoryIds.add(cat.id);
   });
 
-  // Render filter buttons
-  filterOrder.forEach((catId) => {
+  // Render filter buttons ("All" starts active)
+  filterOrder.forEach((catId, i) => {
     const btn = document.createElement("button");
     btn.textContent =
       catId === "all" ? "All" : catId.replace(/_/g, " ").toUpperCase();
+    btn.dataset.catId = catId;
+    if (i === 0) btn.classList.add("active");
     btn.onclick = () => filter(catId);
     filterNav.appendChild(btn);
   });
@@ -80,7 +86,7 @@ function renderFeatured(featured) {
   const strip = document.createElement("div");
   strip.className = "featured-strip";
 
-  featured.forEach((item) => {
+  featured.forEach((item, i) => {
     const catPath = item.category.replace(/::/g, "/");
     const globalIndex = imageMeta.findIndex(
       (m) => m.category === item.category && m.file === item.file
@@ -91,9 +97,11 @@ function renderFeatured(featured) {
     fig.className = "featured-item";
 
     const el = document.createElement("img");
-    el.src = `images/${catPath}/${item.file}`;
+    el.src = thumbUrl(catPath, item.file);
     el.alt = item.title || "";
     el.loading = "lazy";
+    el.decoding = "async";
+    if (i === 0) el.fetchPriority = "high";
     if (item.w && item.h) {
       el.width = item.w;
       el.height = item.h;
@@ -149,13 +157,13 @@ function renderCategory(cat, container, isSubcategory = false) {
       const el = document.createElement("img");
 
       const catPath = cat.id.replace(/::/g, "/");
-      const src = `images/${catPath}/${img.file}`;
-      el.src = src;
+      el.src = thumbUrl(catPath, img.file);
       el.alt = img.title || "";
       el.dataset.title = img.title || "";
       el.dataset.category = cat.id;
       el.dataset.filename = img.file;
       el.loading = "lazy"; // Lazy load for performance
+      el.decoding = "async";
 
       // Intrinsic dimensions prevent layout shift while images load
       if (img.w && img.h) {
@@ -171,6 +179,7 @@ function renderCategory(cat, container, isSubcategory = false) {
         title: img.title || "",
         indexInCategory: idxInCat,
         path: catPath,
+        full: fullUrl(catPath, img.file),
         story: img.has_story ? img.story : null,
         year: img.year || null,
       };
@@ -236,6 +245,11 @@ function renderCategory(cat, container, isSubcategory = false) {
 
 // Filter function
 function filter(id) {
+  // Update active button state
+  filterNav.querySelectorAll("button").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.catId === id);
+  });
+
   // Auto-hide filter nav on mobile when selecting a category
   if (window.innerWidth <= 600) {
     const nav = document.querySelector(".category-nav");
@@ -294,18 +308,18 @@ let currentStoryShowing = false;
 
 function preloadNeighbor(delta) {
   const idx = (currentIndex + delta + images.length) % images.length;
-  if (images[idx]) {
+  const full = imageMeta[idx]?.full;
+  if (full) {
     const preloader = new Image();
-    preloader.src = images[idx].src;
+    preloader.src = full;
   }
 }
 
 function open(index) {
   currentIndex = index;
-  const img = images[index];
   const meta = imageMeta[index];
 
-  lbImg.src = img.src;
+  lbImg.src = meta.full;
   lbTitle.textContent = meta.title || "";
 
   // Stable, readable hash for sharing. pushState so Back closes the
