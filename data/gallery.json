@@ -668,21 +668,6 @@
       ]
     },
     {
-      "id": "random",
-      "title": "Random",
-      "images": [
-        {
-          "file": "My Wedding_Card.webp",
-          "title": "My Wedding Card",
-          "w": 1670,
-          "h": 2400,
-          "year": 2025,
-          "has_story": true,
-          "story": "This was a card I made for my wedding :)"
-        }
-      ]
-    },
-    {
       "id": "doodles",
       "title": "Doodles",
       "images": [
@@ -730,6 +715,15 @@
           "year": 2026,
           "has_story": true,
           "story": "I was at a picnic with some friends (I just drew random characters here though oops) and there was this small duck (?) that kept coming to our mat for some crumbs of bread"
+        },
+        {
+          "file": "My Wedding_Card.webp",
+          "title": "My Wedding Card",
+          "w": 1670,
+          "h": 2400,
+          "year": 2025,
+          "has_story": true,
+          "story": "This was a card I made for my wedding :)"
         }
       ]
     }
