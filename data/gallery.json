@@ -1,72 +1,210 @@
 {
+  "featured": [
+    {
+      "file": "lotus.webp",
+      "title": "Lotus",
+      "w": 2400,
+      "h": 2400,
+      "year": 2026,
+      "has_story": true,
+      "story": "I was super proud of this back then. It was one of my first OC's. A girl who could make flowers grow around her.",
+      "category": "concept_art"
+    },
+    {
+      "file": "Water diety.webp",
+      "title": "Water Diety",
+      "w": 1792,
+      "h": 2400,
+      "year": 2026,
+      "has_story": true,
+      "story": "Goddess of the water. It looks so silly now but I was pretty happy with it back then",
+      "category": "concept_art"
+    },
+    {
+      "file": "City_Dragons.webp",
+      "title": "City Dragons",
+      "w": 2400,
+      "h": 1000,
+      "year": 2026,
+      "has_story": true,
+      "story": "So imagine a city where there are dragons but they are just a normal race like humans. They aren’t always “used” but they can find jobs if they want. For example, they can deliver post. But they can also be homeless, or grand and majestic. \n\n(P.S. I was trying out blender for the first time for the past few artworks. And looks like I didn’t actually do the buildings properly and they don’t scale well. I’m a bit tired of this piece but lessons for future me.)",
+      "category": "concept_art"
+    },
+    {
+      "file": "Eclipse.webp",
+      "title": "Eclipse",
+      "w": 2400,
+      "h": 1514,
+      "year": 2026,
+      "has_story": true,
+      "story": "In ancient times we knew that Eclipse was a deity. Most people couldn’t see her then, and now almost nobody can. We trust in science and our eyes too much these days. But one has to open their eyes to see the truth sometimes. \n\n(I was inspired by well.. the eclipse that happened here the day before and the character design of Selene from the game Hades by @supergiantgames . This was almost meant to be a second “form” for Selene is how this started out. This one has more sun and moon patterns and symbolism. )",
+      "category": "concept_art"
+    },
+    {
+      "file": "Character_Practice.webp",
+      "title": "Character Practice",
+      "w": 2400,
+      "h": 847,
+      "year": 2026,
+      "has_story": true,
+      "story": "Just some character design practice",
+      "category": "concept_art"
+    },
+    {
+      "file": "PikaPi.webp",
+      "title": "Pikapi",
+      "w": 2400,
+      "h": 1350,
+      "year": 2026,
+      "has_story": true,
+      "story": "It was just a cute idea I had",
+      "category": "fanart::Pokemon"
+    }
+  ],
   "categories": [
     {
       "id": "fanart",
       "title": "Fanart",
       "images": [
         {
-          "file": "soda_pop.jpg",
-          "title": "Soda Pop"
+          "file": "soda_pop.webp",
+          "title": "Soda Pop",
+          "w": 2400,
+          "h": 1004,
+          "year": 2026,
+          "has_story": true,
+          "story": "K-pop demon hunters won the Oscar!!!!!! \nSo I was thinking of doing fan art. And what if there was some tomb raider style thing but instead of gold.. it was… a soda pop can with the Saja boys???!!!!\n\n(I know I know. I’m just very happy about it)"
         },
         {
-          "file": "niffler.webp",
-          "title": "Niffler"
-        },
-        {
-          "file": "lily from modern family.webp",
-          "title": "Lily From Modern Family"
-        },
-        {
-          "file": "genshin zhongli.webp",
-          "title": "Genshin Zhongli"
-        },
-        {
-          "file": "aranara.png",
-          "title": "Aranara"
-        },
-        {
-          "file": "finch fanart for my engagement.webp",
-          "title": "Finch Fanart For My Engagement"
+          "file": "aranara.webp",
+          "title": "Aranara",
+          "w": 2400,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "Fanart of a character from the game Genshin Impact. It's an Aranara, a forest spirit."
         },
         {
           "file": "Sekiro fanart.webp",
-          "title": "Sekiro Fanart"
+          "title": "Sekiro Fanart",
+          "w": 2400,
+          "h": 1349,
+          "year": 2026,
+          "has_story": true,
+          "story": "Sekiro fanart with the characters that made the most impact on me"
         },
         {
-          "file": "Percy jackson chosen.webp",
-          "title": "Percy Jackson Chosen"
+          "file": "A_Discovery_Of_Stitches.webp",
+          "title": "A Discovery Of Stitches",
+          "w": 1698,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "So we recently won a plushy of stitch at a fair, and I absolutely had to draw him and give him a little bit of a story. The book the guy has is called the habitats of stitch. And I call this piece a discovery of stitches ;p"
+        },
+        {
+          "file": "genshin zhongli.webp",
+          "title": "Genshin Zhongli",
+          "w": 1493,
+          "h": 2000,
+          "year": 2026
         },
         {
           "file": "Black myth wukong and elden ring fanart.webp",
-          "title": "Black Myth Wukong And Elden Ring Fanart"
+          "title": "Black Myth Wukong And Elden Ring Fanart",
+          "w": 1824,
+          "h": 1026,
+          "year": 2025,
+          "has_story": true,
+          "story": "Malenia from Elden ring, and a character from Black Myth Wukong. I had to lol"
         },
         {
-          "file": "Elden ring + harry potter.webp",
-          "title": "Elden Ring + Harry Potter"
+          "file": "finch fanart for my engagement.webp",
+          "title": "Finch Fanart For My Engagement",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "My wife and I used to use this app called finch. Thought I would draw our characters in it, in 'my' house for our engagement"
         },
         {
-          "file": "Mahabharata fanart.webp",
-          "title": "Mahabharata Fanart"
+          "file": "lily from modern family.webp",
+          "title": "Lily From Modern Family",
+          "w": 1414,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Lily was way too cute in Modern family"
         },
         {
-          "file": "Black myth wukong fanart.webp",
-          "title": "Black Myth Wukong Fanart"
-        },
-        {
-          "file": "Baby_Yoda_.webp",
-          "title": "Baby Yoda"
-        },
-        {
-          "file": "A_Discovery_Of_Stitches.png",
-          "title": "A Discovery Of Stitches"
-        },
-        {
-          "file": "Assasins creed Egpyt.webp",
-          "title": "Assasins Creed Egpyt"
+          "file": "niffler.webp",
+          "title": "Niffler",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Nifflers are cute"
         },
         {
           "file": "2025 finale cake, animals genshin, hsr fanart.webp",
-          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
+          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "This was my summary of 2025 - Honkai star rail, Genshin impact, cute ass animals"
+        },
+        {
+          "file": "Mahabharata fanart.webp",
+          "title": "Mahabharata Fanart",
+          "w": 2000,
+          "h": 1429,
+          "year": 2025,
+          "has_story": true,
+          "story": "Fanart inspired by the Indian epic Mahabharata, this was done for a friend and inspired by the super old tv show that I actually did not watch"
+        },
+        {
+          "file": "Black myth wukong fanart.webp",
+          "title": "Black Myth Wukong Fanart",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Fanart of a character from Black Myth Wukong. Man the character designs are something else."
+        },
+        {
+          "file": "Elden ring + harry potter.webp",
+          "title": "Elden Ring + Harry Potter",
+          "w": 1545,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Hear me out, what if you could have quidditch in Elden ring?"
+        },
+        {
+          "file": "Percy jackson chosen.webp",
+          "title": "Percy Jackson Chosen",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "I drew this a long time back, remember the trident that would glow when a character got accepted by Poseidon?"
+        },
+        {
+          "file": "Assasins creed Egpyt.webp",
+          "title": "Assasins Creed Egpyt",
+          "w": 2000,
+          "h": 1414,
+          "year": 2025,
+          "has_story": true,
+          "story": "Just random people on a pyramid, cuz assasins creed vibes"
+        },
+        {
+          "file": "Baby_Yoda_.webp",
+          "title": "Baby Yoda",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025
         }
       ],
       "subcategories": [
@@ -75,20 +213,40 @@
           "title": "Pokemon",
           "images": [
             {
-              "file": "Pokemon_And_The_House_Of_Hades.png",
-              "title": "Pokemon And The House Of Hades"
+              "file": "Pokemon_And_The_House_Of_Hades.webp",
+              "title": "Pokemon And The House Of Hades",
+              "w": 2390,
+              "h": 1689,
+              "year": 2026,
+              "has_story": true,
+              "story": "Hear me out,what if in Hades (one of the best games ive ever played), Zag had pokemon?"
             },
             {
-              "file": "PikaPi.png",
-              "title": "Pikapi"
+              "file": "PikaPi.webp",
+              "title": "Pikapi",
+              "w": 2400,
+              "h": 1350,
+              "year": 2026,
+              "has_story": true,
+              "story": "It was just a cute idea I had"
             },
             {
               "file": "Move, snorlax!.webp",
-              "title": "Move, Snorlax!"
+              "title": "Move, Snorlax!",
+              "w": 2400,
+              "h": 1350,
+              "year": 2026,
+              "has_story": true,
+              "story": "So Im taking driving lessons, and I was wondering hm, what if a snorlax blocked the road?"
             },
             {
-              "file": "Its_Cold_Today.jpg",
-              "title": "Its Cold Today"
+              "file": "Its_Cold_Today.webp",
+              "title": "Its Cold Today",
+              "w": 1854,
+              "h": 2400,
+              "year": 2026,
+              "has_story": true,
+              "story": "Okay it was snowing outside and I found this reference and I absolutely had to add Charmaders right?"
             }
           ]
         }
@@ -99,124 +257,272 @@
       "title": "Concept Art",
       "images": [
         {
-          "file": "tube.png",
-          "title": "Tube"
+          "file": "tube.webp",
+          "title": "Tube",
+          "w": 1792,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "One of my first attempts at trying to draw some Sci-fi, tube humans."
         },
         {
-          "file": "valentines Day flowers.webp",
-          "title": "Valentines Day Flowers"
+          "file": "mecha1.webp",
+          "title": "Mecha1",
+          "w": 2400,
+          "h": 1000,
+          "year": 2026,
+          "has_story": true,
+          "story": "I was partly inspired by cyberpunk and I wanted to have an illustration of a car towing service where this one girl in a mecha suit is just taking care of a car that should not be there. \nThis is the first time that I used blender for a 3-D mockup and I think it turned out quite well. It was such a random silly idea though."
         },
         {
-          "file": "treegrandpa.webp",
-          "title": "Treegrandpa"
+          "file": "lotus.webp",
+          "title": "Lotus",
+          "w": 2400,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "I was super proud of this back then. It was one of my first OC's. A girl who could make flowers grow around her."
         },
         {
-          "file": "mecha1.jpg",
-          "title": "Mecha1"
+          "file": "dumplings.webp",
+          "title": "Dumplings",
+          "w": 2048,
+          "h": 2048,
+          "year": 2026,
+          "has_story": true,
+          "story": "Stupid idea my partner and I came up with."
         },
         {
-          "file": "lotus.png",
-          "title": "Lotus"
+          "file": "dragon_lotus_music.webp",
+          "title": "Dragon Lotus Music",
+          "w": 1800,
+          "h": 2400,
+          "year": 2026
         },
         {
-          "file": "dumplings.png",
-          "title": "Dumplings"
+          "file": "dad_mask.webp",
+          "title": "Dad Mask",
+          "w": 1668,
+          "h": 2388,
+          "year": 2026,
+          "has_story": true,
+          "story": "Dad found this cool mask so I drew him with it."
         },
         {
-          "file": "dragon_lotus_music.png",
-          "title": "Dragon Lotus Music"
+          "file": "Water diety.webp",
+          "title": "Water Diety",
+          "w": 1792,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "Goddess of the water. It looks so silly now but I was pretty happy with it back then"
         },
         {
-          "file": "dragon_cafe_doodle.webp",
-          "title": "Dragon Cafe Doodle"
-        },
-        {
-          "file": "dad_mask.png",
-          "title": "Dad Mask"
-        },
-        {
-          "file": "boat_people.webp",
-          "title": "Boat People"
-        },
-        {
-          "file": "Water diety.png",
-          "title": "Water Diety"
-        },
-        {
-          "file": "Ugh_That's_A_Huge_Bug.jpg",
-          "title": "Ugh That'S A Huge Bug"
+          "file": "Ugh_That's_A_Huge_Bug.webp",
+          "title": "Ugh That'S A Huge Bug",
+          "w": 2400,
+          "h": 1004,
+          "year": 2026,
+          "has_story": true,
+          "story": "Was doing a study of a desert came and thought what if there was a huge ass bug that came from the ground? A bettle I suppose"
         },
         {
           "file": "The_Botherlands Concept map.webp",
-          "title": "The Botherlands Concept Map"
+          "title": "The Botherlands Concept Map",
+          "w": 2400,
+          "h": 1703,
+          "year": 2025,
+          "has_story": true,
+          "story": "We came up with this concept about the Botherlands, each part is something that's irritating. It was way too much fun"
         },
         {
-          "file": "Seagull_Paniek.jpg",
-          "title": "Seagull Paniek"
+          "file": "Seagull_Paniek.webp",
+          "title": "Seagull Paniek",
+          "w": 2400,
+          "h": 1920,
+          "year": 2026,
+          "has_story": true,
+          "story": "There was a seagull the Other day Trying to rip apart a garbage bag to get some food. I made it into a whole scene and added other seagulls being chaotic."
         },
         {
-          "file": "Pokopia.jpg",
-          "title": "Pokopia"
+          "file": "Pokopia.webp",
+          "title": "Pokopia",
+          "w": 2400,
+          "h": 1692,
+          "year": 2026,
+          "has_story": true,
+          "story": "I reaaaalllly want to play this game but 500 for a console and then 70 for a game? Jesus Christ why! I already have a steam deck. \n\nAnyway this was my way of coping. Pikachu wants to buy it. But charmander sees the wallet is empty. \nThe bag is sad because it’s too small to hold the box. And the coffee machine is keeping everyone company. \nThe person is the main character of the game - basically a ditto (like the one on the box) \nAnd I own a steam deck so that’s there below. With pokemon leaf green, a super old one"
         },
         {
-          "file": "Otters.jpg",
-          "title": "Otters"
-        },
-        {
-          "file": "My grandmother.webp",
-          "title": "My Grandmother"
-        },
-        {
-          "file": "Mini_Characters.jpg",
-          "title": "Mini Characters"
+          "file": "Otters.webp",
+          "title": "Otters",
+          "w": 2400,
+          "h": 1692,
+          "year": 2026,
+          "has_story": true,
+          "story": "Just some otters floating about in an abandoned sunken city"
         },
         {
           "file": "Muscle man.webp",
-          "title": "Muscle Man"
+          "title": "Muscle Man",
+          "w": 1697,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "This was a study"
         },
         {
-          "file": "Lioness.png",
-          "title": "Lioness"
+          "file": "Mini_Characters.webp",
+          "title": "Mini Characters",
+          "w": 2400,
+          "h": 1697,
+          "year": 2026,
+          "has_story": true,
+          "story": "Three characters -\n1. Little lava monster. Has little globules of lava pooling everywhere which it finds quite annoying. After all who likes sweating all the time?\n2. Shade of a woman who ate too many chips. The eyes are the color of Pringles, body the color of the sour cream and onion packet(I’m just craving chips okay don’t mind me)\n3. I identify as a strawberry"
         },
         {
-          "file": "Life_Is_Transient.jpg",
-          "title": "Life Is Transient"
+          "file": "Lioness.webp",
+          "title": "Lioness",
+          "w": 1697,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "Lioness I suppose. Not much to explain here"
         },
         {
-          "file": "Girl with her tiny animal friends.webp",
-          "title": "Girl With Her Tiny Animal Friends"
+          "file": "Life_Is_Transient.webp",
+          "title": "Life Is Transient",
+          "w": 1762,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "We keep saying life is everyone is in their own bubble. Life is so transient, perhaps that’s really true. \nThis is snippets of life in bubbles- the Eiffel Tower, a dog enjoying the wind, snowboarding, someone making food, someone being silly and more. \nIt was fun to paint :)"
         },
         {
-          "file": "Floaty cathedral lady.webp",
-          "title": "Floaty Cathedral Lady"
+          "file": "Essence_Eater.webp",
+          "title": "Essence Eater",
+          "w": 2400,
+          "h": 1697,
+          "year": 2026,
+          "has_story": true,
+          "story": "Essence eater \nAn eldritch being born from the collision of two black holes. Its insides are a sort of jagged space that consumes all just like its parents. It doesn’t really have any particular form or color but us non eldritch beings see them as something akin to an all consuming shapeless being with octopus like tentacles. \nIt shrinks dramatically after birth to around the size of a normal human. \nThose who study these things have always wondered why. Perhaps it has a limit to the amount of matter it can hold? Who knows."
         },
         {
-          "file": "Huge flower and a girl painting it.webp",
-          "title": "Huge Flower And A Girl Painting It"
+          "file": "Eclipse.webp",
+          "title": "Eclipse",
+          "w": 2400,
+          "h": 1514,
+          "year": 2026,
+          "has_story": true,
+          "story": "In ancient times we knew that Eclipse was a deity. Most people couldn’t see her then, and now almost nobody can. We trust in science and our eyes too much these days. But one has to open their eyes to see the truth sometimes. \n\n(I was inspired by well.. the eclipse that happened here the day before and the character design of Selene from the game Hades by @supergiantgames . This was almost meant to be a second “form” for Selene is how this started out. This one has more sun and moon patterns and symbolism. )"
         },
         {
-          "file": "Essence_Eater.jpg",
-          "title": "Essence Eater"
-        },
-        {
-          "file": "Entry to Narnia.webp",
-          "title": "Entry To Narnia"
-        },
-        {
-          "file": "Eclipse.jpg",
-          "title": "Eclipse"
-        },
-        {
-          "file": "City_Dragons.jpg",
-          "title": "City Dragons"
+          "file": "City_Dragons.webp",
+          "title": "City Dragons",
+          "w": 2400,
+          "h": 1000,
+          "year": 2026,
+          "has_story": true,
+          "story": "So imagine a city where there are dragons but they are just a normal race like humans. They aren’t always “used” but they can find jobs if they want. For example, they can deliver post. But they can also be homeless, or grand and majestic. \n\n(P.S. I was trying out blender for the first time for the past few artworks. And looks like I didn’t actually do the buildings properly and they don’t scale well. I’m a bit tired of this piece but lessons for future me.)"
         },
         {
           "file": "Character_Practice.webp",
-          "title": "Character Practice"
+          "title": "Character Practice",
+          "w": 2400,
+          "h": 847,
+          "year": 2026,
+          "has_story": true,
+          "story": "Just some character design practice"
         },
         {
           "file": "A girl in a cacti garden.webp",
-          "title": "A Girl In A Cacti Garden"
+          "title": "A Girl In A Cacti Garden",
+          "w": 2400,
+          "h": 1799,
+          "year": 2026,
+          "has_story": true,
+          "story": "Based on my dad's cactus garden"
+        },
+        {
+          "file": "valentines Day flowers.webp",
+          "title": "Valentines Day Flowers",
+          "w": 1429,
+          "h": 2000,
+          "year": 2026,
+          "has_story": true,
+          "story": "This was a card for valentines day"
+        },
+        {
+          "file": "treegrandpa.webp",
+          "title": "Treegrandpa",
+          "w": 1414,
+          "h": 2000,
+          "year": 2026,
+          "has_story": true,
+          "story": "This is a character design for a tree grandpa"
+        },
+        {
+          "file": "My grandmother.webp",
+          "title": "My Grandmother",
+          "w": 2000,
+          "h": 1397,
+          "year": 2026,
+          "has_story": true,
+          "story": "This is my grandma, before she fell sick. Sigh. It feels weird to think that this was just a little while back. I was just sitting next to her and wanted to draw her"
+        },
+        {
+          "file": "Girl with her tiny animal friends.webp",
+          "title": "Girl With Her Tiny Animal Friends",
+          "w": 2000,
+          "h": 1881,
+          "year": 2026,
+          "has_story": true,
+          "story": "Yeah I know these animals are big IRL but eh, they are tiny in this world"
+        },
+        {
+          "file": "Floaty cathedral lady.webp",
+          "title": "Floaty Cathedral Lady",
+          "w": 1500,
+          "h": 2000,
+          "year": 2026,
+          "has_story": true,
+          "story": "Welp, who doesn't like drawing goddess like ladies with floaty dresses in cathedrals?"
+        },
+        {
+          "file": "Entry to Narnia.webp",
+          "title": "Entry To Narnia",
+          "w": 1545,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "There is a restaurant in Leiden, Netherlands that is based on Narnia"
+        },
+        {
+          "file": "Huge flower and a girl painting it.webp",
+          "title": "Huge Flower And A Girl Painting It",
+          "w": 2000,
+          "h": 1055,
+          "year": 2025,
+          "has_story": true,
+          "story": "She found a huge flower and had to paint it of course"
+        },
+        {
+          "file": "boat_people.webp",
+          "title": "Boat People",
+          "w": 1545,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Based on a little tour we took on a boat once"
+        },
+        {
+          "file": "dragon_cafe_doodle.webp",
+          "title": "Dragon Cafe Doodle",
+          "w": 1545,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "What if there was a cafe where dragons provided flame"
         }
       ]
     },
@@ -225,44 +531,92 @@
       "title": "Animals",
       "images": [
         {
-          "file": "penguin.webp",
-          "title": "Penguin"
-        },
-        {
-          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
-          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1"
-        },
-        {
-          "file": "owl.webp",
-          "title": "Owl"
-        },
-        {
-          "file": "Valentines day mice.webp",
-          "title": "Valentines Day Mice"
-        },
-        {
-          "file": "Golden retriever puppy with our peace lily.webp",
-          "title": "Golden Retriever Puppy With Our Peace Lily"
-        },
-        {
-          "file": "Magic kitty.webp",
-          "title": "Magic Kitty"
+          "file": "Christmas_Card_25.webp",
+          "title": "Christmas Card 25",
+          "w": 2400,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "This was a christmas card, inspired from a video about emperor penguins and hatching season"
         },
         {
           "file": "Ducky with a flower on her head.webp",
-          "title": "Ducky With A Flower On Her Head"
+          "title": "Ducky With A Flower On Her Head",
+          "w": 2000,
+          "h": 1397,
+          "year": 2025,
+          "has_story": true,
+          "story": "It was a reference from instagram"
+        },
+        {
+          "file": "Magic kitty.webp",
+          "title": "Magic Kitty",
+          "w": 1493,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Kittens with magic why not"
         },
         {
           "file": "Cat and dog.webp",
-          "title": "Cat And Dog"
+          "title": "Cat And Dog",
+          "w": 1493,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "One of my college friend's pets"
         },
         {
-          "file": "Christmas_Card_25.webp",
-          "title": "Christmas Card 25"
+          "file": "Valentines day mice.webp",
+          "title": "Valentines Day Mice",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Was a card for valentines day"
         },
         {
           "file": "Detective Feather.webp",
-          "title": "Detective Feather"
+          "title": "Detective Feather",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "Detective bird is on the case"
+        },
+        {
+          "file": "Golden retriever puppy with our peace lily.webp",
+          "title": "Golden Retriever Puppy With Our Peace Lily",
+          "w": 2000,
+          "h": 1414,
+          "year": 2025,
+          "has_story": true,
+          "story": "I really want a dog, but I cant. So this is a dog with our peace lily"
+        },
+        {
+          "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
+          "title": "Whatsapp Image 2025-06-28 At 21.22.47 1",
+          "w": 1772,
+          "h": 1772,
+          "year": 2025,
+          "has_story": true,
+          "story": "This was a christmas card I made"
+        },
+        {
+          "file": "owl.webp",
+          "title": "Owl",
+          "w": 1414,
+          "h": 2000,
+          "year": 2025
+        },
+        {
+          "file": "penguin.webp",
+          "title": "Penguin",
+          "w": 2000,
+          "h": 1574,
+          "year": 2025,
+          "has_story": true,
+          "story": "Baby penguin on a walk"
         }
       ]
     },
@@ -271,24 +625,45 @@
       "title": "Food",
       "images": [
         {
-          "file": "oranges.webp",
-          "title": "Oranges"
+          "file": "Dim sum.webp",
+          "title": "Dim Sum",
+          "w": 1280,
+          "h": 1280,
+          "year": 2026
         },
         {
           "file": "ramen 1.webp",
-          "title": "Ramen 1"
+          "title": "Ramen 1",
+          "w": 2000,
+          "h": 1545,
+          "year": 2025,
+          "has_story": true,
+          "story": "I just like ramen okay"
         },
         {
-          "file": "Dim sum.jpeg",
-          "title": "Dim Sum"
-        },
-        {
-          "file": "Shrimp ramen.webp",
-          "title": "Shrimp Ramen"
+          "file": "oranges.webp",
+          "title": "Oranges",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025
         },
         {
           "file": "mumbday25.webp",
-          "title": "Mumbday25"
+          "title": "Mumbday25",
+          "w": 2000,
+          "h": 2000,
+          "year": 2025,
+          "has_story": true,
+          "story": "This was a card for my mum's birthday"
+        },
+        {
+          "file": "Shrimp ramen.webp",
+          "title": "Shrimp Ramen",
+          "w": 1760,
+          "h": 1760,
+          "year": 2026,
+          "has_story": true,
+          "story": "I dont even eat shrimp but its just so pretty lol"
         }
       ]
     },
@@ -298,7 +673,12 @@
       "images": [
         {
           "file": "My Wedding_Card.webp",
-          "title": "My Wedding Card"
+          "title": "My Wedding Card",
+          "w": 1670,
+          "h": 2400,
+          "year": 2025,
+          "has_story": true,
+          "story": "This was a card I made for my wedding :)"
         }
       ]
     },
@@ -307,24 +687,49 @@
       "title": "Doodles",
       "images": [
         {
-          "file": "Hoverboard.jpg",
-          "title": "Hoverboard"
+          "file": "Hoverboard.webp",
+          "title": "Hoverboard",
+          "w": 2400,
+          "h": 1692,
+          "year": 2026,
+          "has_story": true,
+          "story": "Hoverboards are only for the most egoistical people in this town. That’s why the kids just love making fun of them."
         },
         {
-          "file": "House_Of_Horus.jpg",
-          "title": "House Of Horus"
+          "file": "House_Of_Horus.webp",
+          "title": "House Of Horus",
+          "w": 1920,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "A random doodle where the girl is visiting the house of Horus"
         },
         {
-          "file": "Ghost pokemon army.jpg",
-          "title": "Ghost Pokemon Army"
+          "file": "Ghost pokemon army.webp",
+          "title": "Ghost Pokemon Army",
+          "w": 2400,
+          "h": 1350,
+          "year": 2026,
+          "has_story": true,
+          "story": "Army of ghost pokemon waiting for the ghost queen’s carriage to pass."
         },
         {
-          "file": "Forge.jpg",
-          "title": "Forge"
+          "file": "Forge.webp",
+          "title": "Forge",
+          "w": 2400,
+          "h": 1692,
+          "year": 2026,
+          "has_story": true,
+          "story": "The forge is charmander’s happy place, she’s a flame baby after all. And machamp brings the coal. Ditto does whatever dittos do. (Yeah yeah I’ve been seeing Pokopia. But the switch is too expensive so I’m coping by drawing them instead)"
         },
         {
-          "file": "Crumb.jpg",
-          "title": "Crumb"
+          "file": "Crumb.webp",
+          "title": "Crumb",
+          "w": 1920,
+          "h": 2400,
+          "year": 2026,
+          "has_story": true,
+          "story": "I was at a picnic with some friends (I just drew random characters here though oops) and there was this small duck (?) that kept coming to our mat for some crumbs of bread"
         }
       ]
     }

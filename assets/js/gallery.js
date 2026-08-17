@@ -1,18 +1,33 @@
 const gallery = document.getElementById("gallery");
 const filterNav = document.getElementById("filter-nav");
+const searchInput = document.getElementById("search");
+const toast = document.getElementById("toast");
 
 // Flat list of all <img> elements in visual order
 const images = [];
 
 // Flat metadata list aligned with `images`
-const imageMeta = []; // { category, file, title, indexInCategory, path }
+const imageMeta = []; // { category, catTitle, file, title, indexInCategory, path, story, year }
+
+// Per-figure refs for search filtering
+const figures = [];
 
 // Track all category IDs for filter functionality
 const allCategoryIds = new Set();
 
+let galleryLoaded = false;
+let pendingHash = null;
+
 fetch("data/gallery.json")
   .then(r => r.json())
   .then(data => render(data));
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("visible");
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => toast.classList.remove("visible"), 2000);
+}
 
 function render(data) {
   // Build filter order from TOP-LEVEL categories only (no subcategories in filters)
@@ -36,13 +51,65 @@ function render(data) {
     renderCategory(cat, gallery);
   });
 
-  // Render artwork count after all images are loaded
-  const artworkCount = document.getElementById("artwork-count");
-  artworkCount.textContent = `(${images.length} artworks shown here)/(I have lost count)`;
+  if (data.featured && data.featured.length > 0) {
+    renderFeatured(data.featured);
+  }
+
+  updateArtworkCount();
 
   // Mark gallery as loaded and process any pending hash
   galleryLoaded = true;
   processPendingHash();
+}
+
+function updateArtworkCount(visibleCount) {
+  const artworkCount = document.getElementById("artwork-count");
+  const shown = visibleCount !== undefined ? visibleCount : images.length;
+  artworkCount.textContent = `(${shown} artworks shown here)/(I have lost count)`;
+}
+
+function renderFeatured(featured) {
+  const section = document.createElement("section");
+  section.id = "featured";
+  section.className = "featured-section";
+
+  const h2 = document.createElement("h2");
+  h2.textContent = "FEATURED";
+  section.appendChild(h2);
+
+  const strip = document.createElement("div");
+  strip.className = "featured-strip";
+
+  featured.forEach((item) => {
+    const catPath = item.category.replace(/::/g, "/");
+    const globalIndex = imageMeta.findIndex(
+      (m) => m.category === item.category && m.file === item.file
+    );
+    if (globalIndex === -1) return;
+
+    const fig = document.createElement("figure");
+    fig.className = "featured-item";
+
+    const el = document.createElement("img");
+    el.src = `images/${catPath}/${item.file}`;
+    el.alt = item.title || "";
+    el.loading = "lazy";
+    if (item.w && item.h) {
+      el.width = item.w;
+      el.height = item.h;
+    }
+    el.onclick = () => open(globalIndex);
+    fig.appendChild(el);
+
+    const caption = document.createElement("figcaption");
+    caption.textContent = item.title || "";
+    fig.appendChild(caption);
+
+    strip.appendChild(fig);
+  });
+
+  section.appendChild(strip);
+  gallery.parentElement.insertBefore(section, gallery);
 }
 
 function renderCategory(cat, container, isSubcategory = false) {
@@ -90,13 +157,22 @@ function renderCategory(cat, container, isSubcategory = false) {
       el.dataset.filename = img.file;
       el.loading = "lazy"; // Lazy load for performance
 
+      // Intrinsic dimensions prevent layout shift while images load
+      if (img.w && img.h) {
+        el.width = img.w;
+        el.height = img.h;
+      }
+
       // Store metadata aligned with `images` index
       const meta = {
         category: cat.id,
+        catTitle: cat.title,
         file: img.file,
         title: img.title || "",
         indexInCategory: idxInCat,
         path: catPath,
+        story: img.has_story ? img.story : null,
+        year: img.year || null,
       };
 
       const globalIndex = images.length;
@@ -104,47 +180,50 @@ function renderCategory(cat, container, isSubcategory = false) {
 
       images.push(el);
       imageMeta.push(meta);
+      figures.push({ fig, meta, section });
+
       fig.appendChild(el);
 
-      // Optional story text - defer loading until clicked
-      const textFileName = img.file.replace(/\.[^/.]+$/, "") + ".txt";
-      const textFileUrl = `images/${catPath}/${textFileName}`;
+      // Title + year caption
+      const caption = document.createElement("figcaption");
+      caption.textContent = meta.year ? `${meta.title} · ${meta.year}` : meta.title;
+      fig.appendChild(caption);
 
-      // Create container but only fetch text when requested
-      const textContainer = document.createElement("div");
-      textContainer.className = "image-text-container";
+      // Story controls (only when a real story exists)
+      if (meta.story) {
+        const textContainer = document.createElement("div");
+        textContainer.className = "image-text-container";
 
-      const textButton = document.createElement("button");
-      textButton.className = "text-toggle-btn";
-      textButton.textContent = "Show Story";
-      textButton.onclick = (e) => {
-        e.stopPropagation();
-        toggleImageText(textContainer, textButton, catPath, img.file);
-      };
+        const textButton = document.createElement("button");
+        textButton.className = "text-toggle-btn";
+        textButton.textContent = "Show Story";
+        textButton.onclick = (e) => {
+          e.stopPropagation();
+          toggleImageText(textContainer, textButton, meta.story);
+        };
 
-      // Share story button
-      const shareButton = document.createElement("button");
-      shareButton.className = "share-btn share-story-btn";
-      shareButton.textContent = "Share";
-      shareButton.title = "Copy story link to clipboard";
-      shareButton.onclick = async (e) => {
-        e.stopPropagation();
-        const shareUrl = new URL(location.href);
-        shareUrl.hash = `#category=${encodeURIComponent(cat.id)}&index=${idxInCat}`;
-        navigator.clipboard.writeText(shareUrl.toString()).then(() => {
-          shareButton.textContent = "Copied!";
-          setTimeout(() => { shareButton.textContent = "Share"; }, 2000);
-        });
-      };
+        const shareButton = document.createElement("button");
+        shareButton.className = "share-btn share-story-btn";
+        shareButton.textContent = "Share";
+        shareButton.title = "Copy story link to clipboard";
+        shareButton.onclick = async (e) => {
+          e.stopPropagation();
+          const shareUrl = new URL(location.href);
+          shareUrl.hash = `#category=${encodeURIComponent(cat.id)}&index=${idxInCat}`;
+          navigator.clipboard.writeText(shareUrl.toString()).then(() => {
+            showToast("Link copied!");
+          });
+        };
 
-      const textContent = document.createElement("div");
-      textContent.className = "image-text-content";
-      textContent.style.display = "none";
+        const textContent = document.createElement("div");
+        textContent.className = "image-text-content";
+        textContent.style.display = "none";
 
-      textContainer.appendChild(textButton);
-      textContainer.appendChild(shareButton);
-      textContainer.appendChild(textContent);
-      fig.appendChild(textContainer);
+        textContainer.appendChild(textButton);
+        textContainer.appendChild(shareButton);
+        textContainer.appendChild(textContent);
+        fig.appendChild(textContainer);
+      }
 
       grid.appendChild(fig);
     });
@@ -163,7 +242,7 @@ function filter(id) {
     nav.style.display = "none";
     mobileToggle.textContent = "Filter Categories ▼";
   }
-  
+
   if (id === "all") {
     document
       .querySelectorAll(".category")
@@ -174,10 +253,33 @@ function filter(id) {
   }
 }
 
-// Disable right click on images
-document.addEventListener("contextmenu", (e) => {
-  if (e.target.tagName === "IMG") e.preventDefault();
-});
+// Search filter
+function handleSearch() {
+  const query = searchInput.value.trim().toLowerCase();
+  const featuredSection = document.getElementById("featured");
+  featuredSection?.toggleAttribute("hidden", !!query);
+
+  let visible = 0;
+  const sectionsWithMatches = new Set();
+
+  figures.forEach(({ fig, meta, section }) => {
+    const haystack = `${meta.title} ${meta.catTitle} ${meta.story || ""}`.toLowerCase();
+    const match = !query || haystack.includes(query);
+    fig.style.display = match ? "" : "none";
+    if (match) {
+      visible++;
+      sectionsWithMatches.add(section);
+    }
+  });
+
+  document.querySelectorAll("section.category").forEach((s) => {
+    s.style.display = sectionsWithMatches.has(s) ? "" : "none";
+  });
+
+  updateArtworkCount(visible);
+}
+
+searchInput?.addEventListener("input", handleSearch);
 
 const lightbox = document.getElementById("lightbox");
 const lbImg = document.getElementById("lightbox-img");
@@ -190,6 +292,14 @@ let lbStoryButton = null;
 let lbStoryContent = null;
 let currentStoryShowing = false;
 
+function preloadNeighbor(delta) {
+  const idx = (currentIndex + delta + images.length) % images.length;
+  if (images[idx]) {
+    const preloader = new Image();
+    preloader.src = images[idx].src;
+  }
+}
+
 function open(index) {
   currentIndex = index;
   const img = images[index];
@@ -198,68 +308,63 @@ function open(index) {
   lbImg.src = img.src;
   lbTitle.textContent = meta.title || "";
 
-  // Stable, readable hash for sharing
+  // Stable, readable hash for sharing. pushState so Back closes the
+  // lightbox instead of leaving the site (popstate handler below).
   const hash = `#category=${encodeURIComponent(
     meta.category
   )}&index=${meta.indexInCategory}`;
-  history.replaceState(null, "", hash);
+  if (lightbox.hidden) {
+    history.pushState({ lightbox: true }, "", hash);
+  } else {
+    history.replaceState({ lightbox: true }, "", hash);
+  }
+
+  // Preload next/prev for seamless arrow-key browsing
+  preloadNeighbor(1);
+  preloadNeighbor(-1);
 
   // Reset story state when opening new image
   currentStoryShowing = false;
 
-  // Check if story button already exists, if so, just update it
-  const caption = document.querySelector("#lightbox .caption");
-  
   // Remove existing story elements
-  const existingBtn = caption.querySelector(".lb-story-btn");
-  const existingContent = caption.querySelector(".lb-story-content");
-  if (existingBtn) existingBtn.remove();
-  if (existingContent) existingContent.remove();
+  const caption = document.querySelector("#lightbox .caption");
+  caption.querySelector(".lb-story-btn")?.remove();
+  caption.querySelector(".lb-story-content")?.remove();
+  lbStoryButton = null;
+  lbStoryContent = null;
 
-  // Add story button (check if txt file exists)
-  const textFileName = meta.file.replace(/\.[^/.]+$/, "") + ".txt";
-  const catPath = meta.path || meta.category;
-  const textFileUrl = `images/${catPath}/${textFileName}`;
+  if (meta.story) {
+    lbStoryButton = document.createElement("button");
+    lbStoryButton.className = "lb-story-btn";
+    lbStoryButton.textContent = "Show Story";
+    lbStoryButton.onclick = () => toggleLightboxStory(meta.story);
 
-  fetch(textFileUrl, { method: "HEAD" })
-    .then((response) => {
-      if (response.ok) {
-        lbStoryButton = document.createElement("button");
-        lbStoryButton.className = "lb-story-btn";
-        lbStoryButton.textContent = "Show Story";
-        lbStoryButton.onclick = () => toggleLightboxStory(catPath, meta.file);
+    lbStoryContent = document.createElement("div");
+    lbStoryContent.className = "lb-story-content";
+    lbStoryContent.style.display = "none";
 
-        lbStoryContent = document.createElement("div");
-        lbStoryContent.className = "lb-story-content";
-        lbStoryContent.style.display = "none";
-        
-        // Click on story content to close it
-        lbStoryContent.onclick = (e) => {
-          e.stopPropagation();
-          lbStoryContent.style.display = "none";
-          lbStoryButton.textContent = "Show Story";
-          currentStoryShowing = false;
-        };
-
-        // Insert after share button
-        caption.insertBefore(lbStoryButton, lbShare.nextSibling);
-        caption.appendChild(lbStoryContent);
-      }
-    })
-    .catch(() => {
-      // No story file, do nothing
-    });
+    // Insert after share button
+    caption.insertBefore(lbStoryButton, lbShare.nextSibling);
+    caption.appendChild(lbStoryContent);
+  }
 
   lightbox.hidden = false;
   document.body.classList.add("lightbox-open");
 }
 
-function close() {
+function close(fromPop = false) {
+  if (lightbox.hidden) return;
   lightbox.hidden = true;
   document.body.classList.remove("lightbox-open");
-  // Clear hash on close
-  history.replaceState(null, "", location.pathname + location.search);
+  if (!fromPop && history.state?.lightbox) {
+    history.back();
+  }
 }
+
+// Back button closes an open lightbox
+window.addEventListener("popstate", () => {
+  close(true);
+});
 
 function next() {
   open((currentIndex + 1) % images.length);
@@ -267,21 +372,6 @@ function next() {
 
 function prev() {
   open((currentIndex - 1 + images.length) % images.length);
-}
-
-// Resolve category from <img> if needed
-function getCategoryFromImage(img) {
-  let parent = img.closest("section.category");
-  return parent ? parent.id : "all";
-}
-
-// Local index of image within its category (for hash)
-function getImageIndexInCategory(img, catId) {
-  if (catId === "all") return currentIndex;
-  const section = document.getElementById(catId);
-  if (!section) return 0;
-  const categoryImages = Array.from(section.querySelectorAll("img"));
-  return categoryImages.indexOf(img);
 }
 
 // Map (category, localIndex) → global index using imageMeta
@@ -298,14 +388,10 @@ function getGlobalIndexFromCategory(catId, localIndex) {
   return 0;
 }
 
-// Track if gallery data has been loaded
-let galleryLoaded = false;
-let pendingHash = null;
-
 // Handle deep links like #category=fanart&index=3
 function handleHashChange() {
   const hash = location.hash;
-  if (!hash) return;
+  if (!hash || !lightbox.hidden) return;
 
   const params = new URLSearchParams(hash.slice(1));
   const catId = params.get("category");
@@ -329,7 +415,7 @@ function processPendingHash() {
 
   const { catId, index } = pendingHash;
   const section = document.getElementById(catId);
-  
+
   if (!section) {
     pendingHash = null;
     return;
@@ -349,40 +435,6 @@ function processPendingHash() {
     pendingHash = null;
   }
 }
-
-// Enhanced link opening experience
-function enhanceLinkOpening() {
-  const imgs = document.querySelectorAll("img");
-  imgs.forEach((img) => {
-    img.style.transition =
-      "transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease";
-  });
-
-  document.querySelectorAll(".grid figure").forEach((figure) => {
-    figure.style.transition = "transform 0.3s ease";
-
-    figure.addEventListener("mouseenter", () => {
-      figure.style.transform = "translateY(-4px)";
-    });
-
-    figure.addEventListener("mouseleave", () => {
-      figure.style.transform = "translateY(0)";
-    });
-  });
-
-  document.querySelectorAll("img").forEach((img) => {
-    img.addEventListener("load", () => {
-      img.style.opacity = "1";
-    });
-
-    img.addEventListener("error", () => {
-      img.style.opacity = "0.5";
-      img.style.filter = "grayscale(100%)";
-    });
-  });
-}
-
-document.addEventListener("DOMContentLoaded", enhanceLinkOpening);
 
 // Generate shareable URL for current image
 function generateShareableUrl() {
@@ -406,7 +458,7 @@ lbShare.onclick = () => {
   } else {
     navigator.clipboard
       .writeText(shareUrl)
-      .then(() => alert("Link copied to clipboard"));
+      .then(() => showToast("Link copied!"));
   }
 };
 
@@ -435,8 +487,8 @@ document.addEventListener("keydown", (e) => {
 window.addEventListener("load", handleHashChange);
 window.addEventListener("hashchange", handleHashChange);
 
-// Load and toggle image text
-async function toggleImageText(container, button, categoryId, filename) {
+// Show/toggle the story text (baked into gallery.json)
+function toggleImageText(container, button, story) {
   const textContent = container.querySelector(".image-text-content");
 
   if (textContent.style.display === "block") {
@@ -445,31 +497,11 @@ async function toggleImageText(container, button, categoryId, filename) {
     return;
   }
 
-  button.textContent = "Loading...";
-
-  try {
-    const textFileUrl = `images/${categoryId}/${filename.replace(
-      /\.[^/.]+$/,
-      ""
-    )}.txt`;
-    const response = await fetch(textFileUrl);
-
-    if (response.ok) {
-      const text = await response.text();
-      textContent.innerHTML = `<p>${text.trim()}</p>`;
-      textContent.style.display = "block";
-      button.textContent = "Hide Story";
-    } else {
-      textContent.innerHTML = `<p class="no-text">No Story available</p>`;
-      textContent.style.display = "block";
-      button.textContent = "Hide Story";
-    }
-  } catch (error) {
-    console.error("Error loading text:", error);
-    textContent.innerHTML = `<p class="error-text">Error loading Story</p>`;
-    textContent.style.display = "block";
-    button.textContent = "Hide Story";
-  }
+  const p = document.createElement("p");
+  p.textContent = story.trim();
+  textContent.replaceChildren(p);
+  textContent.style.display = "block";
+  button.textContent = "Hide Story";
 }
 
 // Mobile filter toggle
@@ -483,7 +515,7 @@ mobileToggle.onclick = () => {
 filterNav.parentElement.insertBefore(mobileToggle, filterNav);
 
 // Toggle story in lightbox view
-async function toggleLightboxStory(categoryId, filename) {
+function toggleLightboxStory(story) {
   if (!lbStoryButton || !lbStoryContent) return;
 
   if (lbStoryContent.style.display === "block") {
@@ -493,56 +525,30 @@ async function toggleLightboxStory(categoryId, filename) {
     return;
   }
 
-  lbStoryButton.textContent = "Loading...";
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "lb-story-close";
+  closeBtn.title = "Close";
+  closeBtn.textContent = "×";
+  closeBtn.onclick = (e) => {
+    e.stopPropagation();
+    lbStoryContent.style.display = "none";
+    lbStoryButton.textContent = "Show Story";
+    currentStoryShowing = false;
+  };
 
-  try {
-    const textFileUrl = `images/${categoryId}/${filename.replace(
-      /\.[^/.]+$/,
-      ""
-    )}.txt`;
-    const response = await fetch(textFileUrl);
+  const p = document.createElement("p");
+  p.textContent = story.trim();
 
-    if (response.ok) {
-      const text = await response.text();
-      lbStoryContent.innerHTML = `
-        <button class="lb-story-close" title="Close">×</button>
-        <p>${text.trim()}</p>
-      `;
-      
-      // Add close handler to the X button
-      lbStoryContent.querySelector(".lb-story-close").onclick = (e) => {
-        e.stopPropagation();
-        lbStoryContent.style.display = "none";
-        lbStoryButton.textContent = "Show Story";
-        currentStoryShowing = false;
-      };
-      
-      lbStoryContent.style.display = "block";
-      lbStoryButton.textContent = "Hide Story";
-      currentStoryShowing = true;
-    } else {
-      lbStoryContent.innerHTML = `
-        <button class="lb-story-close" title="Close">×</button>
-        <p class="no-text">No Story available</p>
-      `;
-      lbStoryContent.style.display = "block";
-      lbStoryButton.textContent = "Hide Story";
-    }
-  } catch (error) {
-    console.error("Error loading story:", error);
-    lbStoryContent.innerHTML = `
-      <button class="lb-story-close" title="Close">×</button>
-      <p class="error-text">Error loading Story</p>
-    `;
-    lbStoryContent.style.display = "block";
-    lbStoryButton.textContent = "Hide Story";
-  }
+  lbStoryContent.replaceChildren(closeBtn, p);
+  lbStoryContent.style.display = "block";
+  lbStoryButton.textContent = "Hide Story";
+  currentStoryShowing = true;
 }
 
-// Make story content clickable to close
+// Click on story content (outside the close button) closes it
 document.addEventListener("click", (e) => {
   if (!lbStoryContent || lbStoryContent.style.display !== "block") return;
-  
+
   // Check if click is on or inside the story content
   if (lbStoryContent.contains(e.target) && e.target !== lbStoryContent) {
     lbStoryContent.style.display = "none";

@@ -4,7 +4,19 @@
   <meta charset="UTF-8">
   <title>Art Portfolio – Subhaditya Mukherjee</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Illustration and concept art by Subhaditya Mukherjee. Hand-drawn digital and traditional artwork." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <meta property="og:title" content="Subhaditya Mukherjee – Art Portfolio" />
+  <meta property="og:description" content="Illustration and concept art. Hand-drawn digital and traditional artwork." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://subhadityamukherjee.github.io/My-Art-Gallery/" />
+  <meta property="og:image" content="https://subhadityamukherjee.github.io/My-Art-Gallery/images/concept_art/lotus.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Subhaditya Mukherjee – Art Portfolio" />
+  <meta name="twitter:description" content="Illustration and concept art. Hand-drawn digital and traditional artwork." />
+  <meta name="twitter:image" content="https://subhadityamukherjee.github.io/My-Art-Gallery/images/concept_art/lotus.webp" />
 </head>
 
 <body>
@@ -49,6 +61,11 @@
 
   </section>
 
+  <!-- Search -->
+  <div class="search-box">
+    <input id="search" type="search" placeholder="Search artworks, categories, stories…" autocomplete="off" />
+  </div>
+
   <!-- Category filter buttons -->
   <nav id="filter-nav" class="category-nav"></nav>
   <div id="artwork-count" class="artwork-count"></div>
@@ -71,6 +88,9 @@
 </div>
 
 <script src="assets/js/gallery.js"></script>
+
+<!-- Toast notifications -->
+<div id="toast" role="status" aria-live="polite"></div>
 
 <!-- Scroll to top button -->
 <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">

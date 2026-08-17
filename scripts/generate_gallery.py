@@ -6,9 +6,12 @@ from PIL.ExifTags import TAGS
 
 IMAGES_DIR = Path("images")
 OUTPUT_FILE = Path("data/gallery.json")
+FEATURED_FILE = Path("data/featured.json")
 
 # Order for top-level categories (can be customized)
 CATEGORY_ORDER = ["fanart", "concept_art", "character_design", "animals", "food", "random"]
+
+PLACEHOLDER_STORY = "i have not added the story for this yet"
 
 
 def title_from_filename(filename: str) -> str:
@@ -38,6 +41,28 @@ def get_exif_date_taken(file_path: Path) -> float:
     return 0
 
 
+def get_story(file_path: Path) -> str | None:
+    """Read the sidecar .txt story, ignoring empty/placeholder content."""
+    txt_path = file_path.with_suffix(".txt")
+    if not txt_path.exists():
+        return None
+    try:
+        text = txt_path.read_text(encoding="utf-8").strip()
+    except Exception:
+        return None
+    if not text or text.lower() == PLACEHOLDER_STORY:
+        return None
+    return text
+
+
+def get_dimensions(file_path: Path) -> tuple[int, int]:
+    try:
+        with Image.open(file_path) as img:
+            return img.size
+    except Exception:
+        return (0, 0)
+
+
 def get_image_files(directory: Path) -> list[Path]:
     """Get all image files in a directory, sorted by creation time (newest first)."""
     image_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
@@ -57,6 +82,25 @@ def get_image_files(directory: Path) -> list[Path]:
     
     images_files.sort(key=get_sort_key, reverse=True)
     return images_files
+
+
+def build_image_entry(f: Path) -> dict:
+    w, h = get_dimensions(f)
+    entry = {
+        "file": f.name,
+        "title": title_from_filename(f.name),
+        "w": w,
+        "h": h,
+    }
+    ts = get_exif_date_taken(f)
+    if ts <= 0:
+        ts = f.stat().st_mtime
+    entry["year"] = datetime.fromtimestamp(ts).year
+    story = get_story(f)
+    if story:
+        entry["has_story"] = True
+        entry["story"] = story
+    return entry
 
 
 def build_category_structure(base_path: Path, parent_path: Path | None = None) -> dict | None:
@@ -94,9 +138,7 @@ def build_category_structure(base_path: Path, parent_path: Path | None = None) -
     }
     
     if images:
-        category["images"] = [
-            {"file": f.name, "title": title_from_filename(f.name)} for f in images
-        ]
+        category["images"] = [build_image_entry(f) for f in images]
     
     if subcategories:
         category["subcategories"] = subcategories
@@ -123,8 +165,44 @@ def sort_categories(categories: list) -> list:
     return sorted_cats
 
 
+def iter_images(categories: list):
+    """Yield (category, image_entry) for all categories and subcategories."""
+    for cat in categories:
+        for img in cat.get("images", []):
+            yield cat, img
+        yield from iter_images(cat.get("subcategories", []))
+
+
+def build_featured(gallery: dict) -> list:
+    """Resolve featured.json paths (relative to images/) into gallery entries."""
+    if not FEATURED_FILE.exists():
+        return []
+    try:
+        featured_paths = json.loads(FEATURED_FILE.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"! could not read {FEATURED_FILE}: {e}")
+        return []
+
+    by_path = {
+        f"{cat['id'].replace('::', '/')}/{img['file']}": (cat, img)
+        for cat, img in iter_images(gallery["categories"])
+    }
+
+    featured = []
+    for rel in featured_paths:
+        found = by_path.get(rel)
+        if not found:
+            print(f"! featured path not found: {rel}")
+            continue
+        cat, img = found
+        entry = dict(img)
+        entry["category"] = cat["id"]
+        featured.append(entry)
+    return featured
+
+
 # Build the gallery structure recursively
-gallery = {"categories": []}
+gallery = {"featured": [], "categories": []}
 
 # Process top-level directories
 for item in sorted(IMAGES_DIR.iterdir()):
@@ -136,9 +214,12 @@ for item in sorted(IMAGES_DIR.iterdir()):
 # Sort categories by predefined order
 gallery["categories"] = sort_categories(gallery["categories"])
 
+# Resolve featured strip
+gallery["featured"] = build_featured(gallery)
+
 OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(gallery, f, indent=2, ensure_ascii=False)
 
-print(f"✓ gallery.json generated with {len(gallery['categories'])} top-level categories")
+print(f"✓ gallery.json generated with {len(gallery['categories'])} top-level categories, {len(gallery['featured'])} featured")
