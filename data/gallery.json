@@ -726,6 +726,21 @@
           "story": "This was a card I made for my wedding :)"
         }
       ]
+    },
+    {
+      "id": "self_portrait",
+      "title": "Self Portrait",
+      "images": [
+        {
+          "file": "Self_Portrait_Day_2026.webp",
+          "title": "Self Portrait Day 2026",
+          "w": 2400,
+          "h": 1920,
+          "year": 2026,
+          "has_story": true,
+          "story": "So I thought I would do a self portrait day. This picture is basically me surrounded by all the things that have influenced me  \nGenshin impact \nSekiro\nElden ring\nAvatar: The Last Airbender\nWitch hat atelier\nPercy Jackson \nAI limit\nPokemon\nHades (the game)"
+        }
+      ]
     }
   ]
 }
