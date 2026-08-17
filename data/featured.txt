@@ -6,14 +6,10 @@
 #   - Delete a line to remove it from the strip; add a line to add one.
 #   - Lines starting with # are comments and are ignored.
 #   - Invalid paths are skipped with a warning when gallery.json regenerates.
-#
-# Example:
-#   concept_art/lotus.webp
-#   fanart/Pokemon/PikaPi.webp
 
-concept_art/lotus.webp
-concept_art/Water diety.webp
-concept_art/City_Dragons.webp
 concept_art/Eclipse.webp
-concept_art/Character_Practice.webp
-fanart/Pokemon/PikaPi.webp
+fanart/A_Discovery_Of_Stitches.webp
+fanart/soda_pop.webp
+concept_art/Pokopia.webp
+fanart/Pokemon/Pokemon_And_The_House_Of_Hades.webp
+fanart/Mahabharata fanart.webp

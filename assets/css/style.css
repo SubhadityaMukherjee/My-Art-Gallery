@@ -79,7 +79,8 @@ section[id] { scroll-margin-top: 4.5rem; }
   margin: 6.5rem 0 2.8rem;
 }
 
-.featured-section .section-head { margin-top: 4.5rem; }
+/* About leads the page, right under the masthead */
+.about-section .section-head { margin-top: 2.5rem; }
 
 .section-num {
   color: var(--accent);
@@ -274,9 +275,9 @@ figcaption {
 
 figure:hover figcaption { color: var(--accent); }
 
-/* ── 03 · About + footer ──────────────────────────────── */
+/* ── 01 · About ───────────────────────────────────────── */
 
-.about-section { margin: 2rem 0 6rem; }
+.about-section { margin: 0 0 2rem; }
 
 .about-intro {
   max-width: 620px;
