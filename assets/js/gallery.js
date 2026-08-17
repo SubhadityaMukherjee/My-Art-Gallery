@@ -3,6 +3,39 @@ const filterNav = document.getElementById("filter-nav");
 const searchInput = document.getElementById("search");
 const toast = document.getElementById("toast");
 
+// Build "Title · Year · Story" caption; the Story mark hints a story exists
+function buildCaption(meta) {
+  const caption = document.createElement("figcaption");
+  caption.append(meta.title);
+  if (meta.year) caption.append(` · ${meta.year}`);
+  if (meta.story) {
+    const mark = document.createElement("span");
+    mark.className = "story-mark";
+    mark.textContent = "Story";
+    caption.append(" · ", mark);
+  }
+  return caption;
+}
+
+// Wrap the image in a relative container and reveal the story on hover.
+// Overlay is pointer-events:none so clicks still open the lightbox.
+function attachStoryOverlay(fig, story) {
+  const img = fig.querySelector("img");
+  if (!img) return;
+
+  const wrap = document.createElement("div");
+  wrap.className = "artwork";
+  img.replaceWith(wrap);
+  wrap.appendChild(img);
+
+  const overlay = document.createElement("div");
+  overlay.className = "story-overlay";
+  const p = document.createElement("p");
+  p.textContent = story.trim();
+  overlay.appendChild(p);
+  wrap.appendChild(overlay);
+}
+
 // Flat list of all <img> elements in visual order
 const images = [];
 
@@ -110,11 +143,9 @@ function renderFeatured(featured) {
     el.onclick = () => open(globalIndex);
     fig.appendChild(el);
 
-    const caption = document.createElement("figcaption");
-    caption.textContent = item.year
-      ? `${item.title} · ${item.year}`
-      : item.title;
+    const caption = buildCaption(item);
     fig.appendChild(caption);
+    if (item.story) attachStoryOverlay(fig, item.story);
 
     grid.appendChild(fig);
   });
@@ -183,10 +214,9 @@ function renderCategory(cat, container, isSubcategory = false) {
 
       fig.appendChild(el);
 
-      // Title + year caption
-      const caption = document.createElement("figcaption");
-      caption.textContent = meta.year ? `${meta.title} · ${meta.year}` : meta.title;
-      fig.appendChild(caption);
+      // Title · Year · Story caption + hover story overlay
+      fig.appendChild(buildCaption(meta));
+      if (meta.story) attachStoryOverlay(fig, meta.story);
 
       grid.appendChild(fig);
     });

@@ -26,11 +26,14 @@ jobs:
       - name: Run generate_gallery script
         run: uv run python scripts/generate_gallery.py
 
+      - name: Generate RSS feed
+        run: uv run python scripts/generate_feed.py
+
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A images data
+          git add -A images data feed.xml
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

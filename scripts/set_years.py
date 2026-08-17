@@ -82,7 +82,7 @@ YEAR_MAP = {
     "concept_art/Pokopia.webp": 2026,
     "concept_art/Mini_Characters.webp": 2026,
     "concept_art/Seagull_Paniek.webp": 2026,
-    "concept_art/Life_Is_Transient.webp": 2026,
+    "concept_art/Life_Is_Transient.webp": 2024,
     "fanart/soda_pop.webp": 2026,
     "fanart/A_Discovery_Of_Stitches.webp": 2026,
     "fanart/Sekiro fanart.webp": 2026,
