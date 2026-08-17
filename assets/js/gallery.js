@@ -57,6 +57,10 @@ function render(data) {
     renderCategory(cat, gallery);
   });
 
+  // Row-flow masonry: distribute figures across columns so reading
+  // order runs left-to-right (matches the sorted data order)
+  layoutMasonry();
+
   if (data.featured && data.featured.length > 0) {
     renderFeatured(data.featured);
   }
@@ -193,9 +197,46 @@ function renderCategory(cat, container, isSubcategory = false) {
   container.appendChild(section);
 }
 
+// Row-flow masonry: figures are distributed round-robin into N columns,
+// so DOM order reads left-to-right across rows (newest first, like the data).
+const MASONRY_BREAKPOINTS = [
+  [1000, 3],
+  [640, 2],
+  [0, 1],
+];
+
+function columnCount() {
+  const w = window.innerWidth;
+  for (const [minWidth, cols] of MASONRY_BREAKPOINTS) {
+    if (w >= minWidth) return cols;
+  }
+  return 1;
+}
+
+function layoutMasonry() {
+  const cols = columnCount();
+  document.querySelectorAll(".grid").forEach((grid) => {
+    // Flatten any existing column wrappers (idempotent re-layout)
+    const figs = Array.from(grid.querySelectorAll("figure"));
+    grid.replaceChildren();
+
+    const colEls = Array.from({ length: cols }, () => {
+      const col = document.createElement("div");
+      col.className = "masonry-col";
+      grid.appendChild(col);
+      return col;
+    });
+
+    figs.forEach((fig, i) => colEls[i % cols].appendChild(fig));
+  });
+}
+
+["(min-width: 1000px)", "(min-width: 640px)"].forEach((q) => {
+  matchMedia(q).addEventListener("change", layoutMasonry);
+});
+
 // Filter function
-function filter(id) {
-  // Update active button state
+function filter(id) {  // Update active button state
   filterNav.querySelectorAll("button").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.catId === id);
   });

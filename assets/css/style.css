@@ -234,20 +234,23 @@ section[id] { scroll-margin-top: 4.5rem; }
   margin: 3rem 0 1.2rem;
 }
 
-/* ── Masonry gallery ──────────────────────────────────── */
+/* ── Masonry gallery (row-flow; JS distributes into columns) ── */
 
 .grid {
-  columns: 3;
-  column-gap: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
 }
 
-.grid figure {
-  break-inside: avoid;
-  margin: 0 0 2.5rem;
+.masonry-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-@media (max-width: 1000px) { .grid { columns: 2; } }
-@media (max-width: 640px)  { .grid { columns: 1; column-gap: 0; } }
+.grid figure { margin: 0; }
 
 /* ── Artwork figures (no cards, no borders) ───────────── */
 
