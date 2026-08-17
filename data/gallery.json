@@ -5,16 +5,16 @@
       "title": "Fanart",
       "images": [
         {
+          "file": "aranara.png",
+          "title": "Aranara"
+        },
+        {
           "file": "soda_pop.jpg",
           "title": "Soda Pop"
         },
         {
-          "file": "lily from modern family.webp",
-          "title": "Lily From Modern Family"
-        },
-        {
-          "file": "niffler.webp",
-          "title": "Niffler"
+          "file": "A_Discovery_Of_Stitches.png",
+          "title": "A Discovery Of Stitches"
         },
         {
           "file": "Sekiro fanart.webp",
@@ -25,44 +25,48 @@
           "title": "Genshin Zhongli"
         },
         {
+          "file": "Black myth wukong and elden ring fanart.webp",
+          "title": "Black Myth Wukong And Elden Ring Fanart"
+        },
+        {
           "file": "finch fanart for my engagement.webp",
           "title": "Finch Fanart For My Engagement"
         },
         {
-          "file": "Percy jackson chosen.webp",
-          "title": "Percy Jackson Chosen"
+          "file": "lily from modern family.webp",
+          "title": "Lily From Modern Family"
+        },
+        {
+          "file": "niffler.webp",
+          "title": "Niffler"
+        },
+        {
+          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
+          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
         },
         {
           "file": "Mahabharata fanart.webp",
           "title": "Mahabharata Fanart"
         },
         {
-          "file": "Baby_Yoda_.webp",
-          "title": "Baby Yoda"
-        },
-        {
-          "file": "Black myth wukong and elden ring fanart.webp",
-          "title": "Black Myth Wukong And Elden Ring Fanart"
+          "file": "Black myth wukong fanart.webp",
+          "title": "Black Myth Wukong Fanart"
         },
         {
           "file": "Elden ring + harry potter.webp",
           "title": "Elden Ring + Harry Potter"
         },
         {
+          "file": "Percy jackson chosen.webp",
+          "title": "Percy Jackson Chosen"
+        },
+        {
           "file": "Assasins creed Egpyt.webp",
           "title": "Assasins Creed Egpyt"
         },
         {
-          "file": "Black myth wukong fanart.webp",
-          "title": "Black Myth Wukong Fanart"
-        },
-        {
-          "file": "A_Discovery_Of_Stitches.png",
-          "title": "A Discovery Of Stitches"
-        },
-        {
-          "file": "2025 finale cake, animals genshin, hsr fanart.webp",
-          "title": "2025 Finale Cake, Animals Genshin, Hsr Fanart"
+          "file": "Baby_Yoda_.webp",
+          "title": "Baby Yoda"
         }
       ],
       "subcategories": [
@@ -70,6 +74,10 @@
           "id": "fanart::Pokemon",
           "title": "Pokemon",
           "images": [
+            {
+              "file": "PikaPi.png",
+              "title": "Pikapi"
+            },
             {
               "file": "Pokemon_And_The_House_Of_Hades.png",
               "title": "Pokemon And The House Of Hades"
@@ -91,78 +99,44 @@
       "title": "Concept Art",
       "images": [
         {
-          "file": "mecha1.jpg",
-          "title": "Mecha1"
+          "file": "dad_mask.png",
+          "title": "Dad Mask"
         },
         {
-          "file": "Ugh_That's_A_Huge_Bug.jpg",
-          "title": "Ugh That'S A Huge Bug"
-        },
-        {
-          "file": "dragon_cafe_doodle.webp",
-          "title": "Dragon Cafe Doodle"
-        },
-        {
-          "file": "boat_people.webp",
-          "title": "Boat People"
-        },
-        {
-          "file": "The_Botherlands Concept map.webp",
-          "title": "The Botherlands Concept Map"
-        },
-        {
-          "file": "Seagull_Paniek.jpg",
-          "title": "Seagull Paniek"
-        },
-        {
-          "file": "Pokopia.jpg",
-          "title": "Pokopia"
-        },
-        {
-          "file": "Otters.jpg",
-          "title": "Otters"
-        },
-        {
-          "file": "Life_Is_Transient.jpg",
-          "title": "Life Is Transient"
-        },
-        {
-          "file": "Huge flower and a girl painting it.webp",
-          "title": "Huge Flower And A Girl Painting It"
-        },
-        {
-          "file": "Entry to Narnia.webp",
-          "title": "Entry To Narnia"
-        },
-        {
-          "file": "Eclipse.jpg",
-          "title": "Eclipse"
-        },
-        {
-          "file": "City_Dragons.jpg",
-          "title": "City Dragons"
-        },
-        {
-          "file": "A girl in a cacti garden.webp",
-          "title": "A Girl In A Cacti Garden"
-        }
-      ]
-    },
-    {
-      "id": "character_design",
-      "title": "Character Design",
-      "images": [
-        {
-          "file": "My grandmother.webp",
-          "title": "My Grandmother"
+          "file": "Character_Practice.webp",
+          "title": "Character Practice"
         },
         {
           "file": "valentines Day flowers.webp",
           "title": "Valentines Day Flowers"
         },
         {
+          "file": "tube.png",
+          "title": "Tube"
+        },
+        {
           "file": "treegrandpa.webp",
           "title": "Treegrandpa"
+        },
+        {
+          "file": "lotus.png",
+          "title": "Lotus"
+        },
+        {
+          "file": "dumplings.png",
+          "title": "Dumplings"
+        },
+        {
+          "file": "dragon_lotus_music.png",
+          "title": "Dragon Lotus Music"
+        },
+        {
+          "file": "Water diety.png",
+          "title": "Water Diety"
+        },
+        {
+          "file": "My grandmother.webp",
+          "title": "My Grandmother"
         },
         {
           "file": "Muscle man.webp",
@@ -171,6 +145,10 @@
         {
           "file": "Mini_Characters.jpg",
           "title": "Mini Characters"
+        },
+        {
+          "file": "Lioness.png",
+          "title": "Lioness"
         },
         {
           "file": "Girl with her tiny animal friends.webp",
@@ -185,8 +163,60 @@
           "title": "Essence Eater"
         },
         {
-          "file": "Character_Practice.webp",
-          "title": "Character Practice"
+          "file": "mecha1.jpg",
+          "title": "Mecha1"
+        },
+        {
+          "file": "Seagull_Paniek.jpg",
+          "title": "Seagull Paniek"
+        },
+        {
+          "file": "Pokopia.jpg",
+          "title": "Pokopia"
+        },
+        {
+          "file": "Otters.jpg",
+          "title": "Otters"
+        },
+        {
+          "file": "Eclipse.jpg",
+          "title": "Eclipse"
+        },
+        {
+          "file": "City_Dragons.jpg",
+          "title": "City Dragons"
+        },
+        {
+          "file": "Ugh_That's_A_Huge_Bug.jpg",
+          "title": "Ugh That'S A Huge Bug"
+        },
+        {
+          "file": "Life_Is_Transient.jpg",
+          "title": "Life Is Transient"
+        },
+        {
+          "file": "The_Botherlands Concept map.webp",
+          "title": "The Botherlands Concept Map"
+        },
+        {
+          "file": "Entry to Narnia.webp",
+          "title": "Entry To Narnia"
+        },
+        {
+          "file": "Huge flower and a girl painting it.webp",
+          "title": "Huge Flower And A Girl Painting It"
+        },
+        {
+          "file": "A girl in a cacti garden.webp",
+          "title": "A Girl In A Cacti Garden"
+        },
+        {
+          "file": "boat_people.webp",
+          "title": "Boat People"
+        },
+        {
+          "file": "dragon_cafe_doodle.webp",
+          "title": "Dragon Cafe Doodle"
         }
       ]
     },
@@ -195,8 +225,28 @@
       "title": "Animals",
       "images": [
         {
-          "file": "penguin.webp",
-          "title": "Penguin"
+          "file": "Ducky with a flower on her head.webp",
+          "title": "Ducky With A Flower On Her Head"
+        },
+        {
+          "file": "Magic kitty.webp",
+          "title": "Magic Kitty"
+        },
+        {
+          "file": "Cat and dog.webp",
+          "title": "Cat And Dog"
+        },
+        {
+          "file": "Valentines day mice.webp",
+          "title": "Valentines Day Mice"
+        },
+        {
+          "file": "Detective Feather.webp",
+          "title": "Detective Feather"
+        },
+        {
+          "file": "Golden retriever puppy with our peace lily.webp",
+          "title": "Golden Retriever Puppy With Our Peace Lily"
         },
         {
           "file": "WhatsApp_Image_2025-06-28_at_21.22.47_1.webp",
@@ -207,32 +257,12 @@
           "title": "Owl"
         },
         {
-          "file": "Golden retriever puppy with our peace lily.webp",
-          "title": "Golden Retriever Puppy With Our Peace Lily"
-        },
-        {
-          "file": "Magic kitty.webp",
-          "title": "Magic Kitty"
-        },
-        {
-          "file": "Valentines day mice.webp",
-          "title": "Valentines Day Mice"
-        },
-        {
-          "file": "Cat and dog.webp",
-          "title": "Cat And Dog"
-        },
-        {
-          "file": "Ducky with a flower on her head.webp",
-          "title": "Ducky With A Flower On Her Head"
+          "file": "penguin.webp",
+          "title": "Penguin"
         },
         {
           "file": "Christmas_Card_25.webp",
           "title": "Christmas Card 25"
-        },
-        {
-          "file": "Detective Feather.webp",
-          "title": "Detective Feather"
         }
       ]
     },
@@ -241,20 +271,20 @@
       "title": "Food",
       "images": [
         {
-          "file": "mumbday25.webp",
-          "title": "Mumbday25"
-        },
-        {
-          "file": "oranges.webp",
-          "title": "Oranges"
+          "file": "Dim sum.jpeg",
+          "title": "Dim Sum"
         },
         {
           "file": "ramen 1.webp",
           "title": "Ramen 1"
         },
         {
-          "file": "Dim sum.jpeg",
-          "title": "Dim Sum"
+          "file": "oranges.webp",
+          "title": "Oranges"
+        },
+        {
+          "file": "mumbday25.webp",
+          "title": "Mumbday25"
         },
         {
           "file": "Shrimp ramen.webp",
