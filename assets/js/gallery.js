@@ -1,6 +1,5 @@
 const gallery = document.getElementById("gallery");
 const filterNav = document.getElementById("filter-nav");
-const searchInput = document.getElementById("search");
 const toast = document.getElementById("toast");
 
 // Build "Title · Year · Story" caption; the Story mark hints a story exists
@@ -17,8 +16,9 @@ function buildCaption(meta) {
   return caption;
 }
 
-// Wrap the image in a relative container and reveal the story on hover.
-// Overlay is pointer-events:none so clicks still open the lightbox.
+// Wrap the image in a relative container. The story overlay is revealed
+// by clicking the "Story" mark in the caption (toggled, never hovered),
+// with its own close button; a click on the image still opens the lightbox.
 function attachStoryOverlay(fig, story) {
   const img = fig.querySelector("img");
   if (!img) return;
@@ -30,10 +30,44 @@ function attachStoryOverlay(fig, story) {
 
   const overlay = document.createElement("div");
   overlay.className = "story-overlay";
+
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "story-close";
+  closeBtn.type = "button";
+  closeBtn.ariaLabel = "Close story";
+  closeBtn.textContent = "×";
+  closeBtn.onclick = (e) => {
+    e.stopPropagation();
+    overlay.classList.remove("open");
+  };
+
   const p = document.createElement("p");
   p.textContent = story.trim();
-  overlay.appendChild(p);
+  overlay.append(closeBtn, p);
   wrap.appendChild(overlay);
+
+  // Clicking the overlay background (not the × or the text) closes it too
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) overlay.classList.remove("open");
+  });
+
+  // "Story" mark in the caption toggles the overlay
+  const mark = fig.querySelector(".story-mark");
+  if (mark) {
+    mark.classList.add("story-toggle");
+    mark.role = "button";
+    mark.tabIndex = 0;
+    mark.addEventListener("click", (e) => {
+      e.stopPropagation();
+      overlay.classList.toggle("open");
+    });
+    mark.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        overlay.classList.toggle("open");
+      }
+    });
+  }
 }
 
 // Flat list of all <img> elements in visual order
@@ -41,9 +75,6 @@ const images = [];
 
 // Flat metadata list aligned with `images`
 const imageMeta = []; // { category, catTitle, file, title, indexInCategory, path, story, year }
-
-// Per-figure refs for search filtering
-const figures = [];
 
 // Track all category IDs for filter functionality
 const allCategoryIds = new Set();
@@ -210,7 +241,6 @@ function renderCategory(cat, container, isSubcategory = false) {
 
       images.push(el);
       imageMeta.push(meta);
-      figures.push({ fig, meta, section });
 
       fig.appendChild(el);
 
@@ -280,34 +310,6 @@ function filter(id) {  // Update active button state
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 }
-
-// Search filter
-function handleSearch() {
-  const query = searchInput.value.trim().toLowerCase();
-  const featuredSection = document.getElementById("featured");
-  featuredSection?.toggleAttribute("hidden", !!query);
-
-  let visible = 0;
-  const sectionsWithMatches = new Set();
-
-  figures.forEach(({ fig, meta, section }) => {
-    const haystack = `${meta.title} ${meta.catTitle} ${meta.story || ""}`.toLowerCase();
-    const match = !query || haystack.includes(query);
-    fig.style.display = match ? "" : "none";
-    if (match) {
-      visible++;
-      sectionsWithMatches.add(section);
-    }
-  });
-
-  document.querySelectorAll("section.category").forEach((s) => {
-    s.style.display = sectionsWithMatches.has(s) ? "" : "none";
-  });
-
-  updateArtworkCount(visible);
-}
-
-searchInput?.addEventListener("input", handleSearch);
 
 const lightbox = document.getElementById("lightbox");
 const lbImg = document.getElementById("lightbox-img");

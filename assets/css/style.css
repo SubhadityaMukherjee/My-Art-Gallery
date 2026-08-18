@@ -138,7 +138,7 @@ section[id] { scroll-margin-top: 4.5rem; }
   }
 }
 
-/* ── 02 · Toolbar: category tabs + search ─────────────── */
+/* ── 02 · Toolbar: category tabs ──────────────────────── */
 
 .gallery-tools {
   position: sticky;
@@ -178,31 +178,9 @@ section[id] { scroll-margin-top: 4.5rem; }
   border-bottom-color: var(--accent);
 }
 
-#search {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--faint);
-  color: var(--muted);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  padding: 0.35rem 0;
-  width: 200px;
-  min-width: 110px;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-#search::placeholder { color: var(--muted); opacity: 0.7; }
-
-#search:focus {
-  outline: none;
-  border-bottom-color: var(--accent);
-  color: var(--fg);
-}
-
 @media (max-width: 640px) {
   .gallery-tools { flex-direction: column; align-items: stretch; gap: 0.4rem; }
   .category-nav { gap: 1.2rem; }
-  #search { width: 100%; }
 }
 
 .artwork-count {
@@ -285,7 +263,16 @@ figure:hover figcaption { color: var(--accent); }
   letter-spacing: 0.14em;
 }
 
-/* Story revealed on hover (desktop); lightbox Story button covers touch */
+/* "Story" mark is clickable — toggles the grid overlay */
+.story-mark.story-toggle {
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.story-mark.story-toggle:hover { border-bottom-color: var(--accent); }
+
+/* Story overlay: shown on click via the .open class, closed by its × */
 .artwork { position: relative; }
 
 .story-overlay {
@@ -295,19 +282,34 @@ figure:hover figcaption { color: var(--accent); }
   align-items: flex-end;
   background: rgba(7, 11, 20, 0.88);
   border-radius: 2px;
-  padding: 1rem;
+  padding: 1.6rem 1rem 1rem;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
   pointer-events: none;
-  cursor: zoom-in;
 }
 
-figure:hover .story-overlay,
-figure:focus-within .story-overlay {
+.story-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
+
+.story-close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.story-close:hover { color: var(--accent); }
 
 .story-overlay p {
   margin: 0;
@@ -316,6 +318,7 @@ figure:focus-within .story-overlay {
   color: var(--fg);
   max-height: 100%;
   overflow-y: auto;
+  padding-right: 1.2rem;
 }
 
 /* ── 01 · About ───────────────────────────────────────── */
@@ -555,8 +558,6 @@ body.lightbox-open { overflow: hidden; }
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
-
-#search:focus-visible { outline: none; border-bottom-color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   *,
